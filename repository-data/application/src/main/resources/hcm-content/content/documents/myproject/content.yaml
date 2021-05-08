@@ -1,0 +1,161 @@
+/content/documents/myproject/content:
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippotranslation:translated', 'mix:referenceable']
+  jcr:uuid: 865a2ac9-ded9-4c60-abfb-00e999809b19
+  hippostd:foldertype: [new-content-document, new-content-folder]
+  hippotranslation:id: d187e273-3545-4992-b85d-8580c4128249
+  hippotranslation:locale: en
+  /sample-document:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    jcr:uuid: 64ab4648-0c20-40d2-9f18-d7a394f0334b
+    hippo:name: Sample document
+    /sample-document:
+      jcr:primaryType: myproject:contentdocument
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 0903367c-6feb-48aa-98c2-f1561edbce3a
+      hippo:availability: [live, preview]
+      hippostd:holder: admin
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2014-03-25T16:52:00+01:00
+      hippostdpubwf:lastModificationDate: 2014-03-25T16:52:00+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2014-03-25T16:52:00+01:00
+      hippotranslation:id: 420187a2-bb18-42d0-9507-f962cf9e3f21
+      hippotranslation:locale: en
+      myproject:introduction: Lorem Ipsum is simply dummy text of the printing and
+        typesetting industry.
+      myproject:publicationdate: 2014-03-25T16:52:00+01:00
+      myproject:title: Lorem
+      /myproject:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <html>
+                      <body>
+
+                      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has
+                      roots in a piece of classical Latin literature from 45 BC, making it over 2000
+                      years old. Richard McClintock, a Latin professor at Hampden-Sydney College in
+                      Virginia, looked up one of the more obscure Latin words, consectetur, from a
+                      Lorem Ipsum passage, and going through the cites of the word in classical
+                      literature, discovered the undoubtable source. Lorem Ipsum comes from sections
+                      1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
+                      Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of
+                      ethics, very popular during the Renaissance. The first line of Lorem Ipsum,
+                      "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+
+                      </body>
+                      </html>
+  /another-sample-document:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+    jcr:uuid: 9caea793-42b1-4f3e-a8e5-d58f810ce2ef
+    hippo:name: Another sample document
+    /another-sample-document:
+      jcr:primaryType: myproject:contentdocument
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 61091f17-879d-47a6-8cde-c9bfb404e2d2
+      hippo:availability: [live, preview]
+      hippostd:holder: admin
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2014-03-25T16:52:00+01:00
+      hippostdpubwf:lastModificationDate: 2014-03-25T16:57:00+01:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2014-03-25T16:57:00+01:00
+      hippotranslation:id: 5b818ad0-373f-47fe-8d24-85e098c9d316
+      hippotranslation:locale: en
+      myproject:introduction: Lorem Ipsum is simply dummy text of the printing and
+        typesetting industry.
+      myproject:publicationdate: 2014-03-25T16:52:00+01:00
+      myproject:title: Another Lorem
+      /myproject:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: |-
+          <html>
+                      <body>
+
+                      <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has
+                      roots in a piece of classical Latin literature from 45 BC, making it over 2000
+                      years old. Richard McClintock, a Latin professor at Hampden-Sydney College in
+                      Virginia, looked up one of the more obscure Latin words, consectetur, from a
+                      Lorem Ipsum passage, and going through the cites of the word in classical
+                      literature, discovered the undoubtable source. Lorem Ipsum comes from sections
+                      1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
+                      Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of
+                      ethics, very popular during the Renaissance. The first line of Lorem Ipsum,
+                      "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+
+                      </body>
+                      </html>
+  /home-greeting:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 279604dc-a982-4a33-b45d-af59cf0ae992
+    hippo:name: Home-Greeting
+    hippo:versionHistory: 70af9338-8354-4da2-aa0b-0f0f5ff751ee
+    /home-greeting[1]:
+      jcr:primaryType: myproject:contentdocument
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 815e0c7c-99a2-42f0-ad1e-303adbb4b5fb
+      hippo:availability: []
+      hippo:related___pathreference: []
+      hippostd:retainable: false
+      hippostd:state: draft
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2021-05-08T08:40:18.796-04:00
+      hippostdpubwf:lastModificationDate: 2021-05-08T08:40:18.797-04:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: a0fe7ba4-9359-44c2-beb8-95e582b7b99a
+      hippotranslation:locale: en
+      myproject:introduction: This is my first installation of Bloomreach 14.5
+      myproject:publicationdate: 0001-01-01T13:00:00+01:00
+      myproject:title: Welcome to my page
+      /myproject:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>With Bloomreach, much is possible. But with great power,
+          comes great responsibility</p>
+    /home-greeting[2]:
+      jcr:primaryType: myproject:contentdocument
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 21802db5-a4b6-49d1-8e77-1e6e6ade6e61
+      hippo:availability: [preview]
+      hippo:related___pathreference: []
+      hippostd:retainable: false
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2021-05-08T08:40:18.796-04:00
+      hippostdpubwf:lastModificationDate: 2021-05-08T08:41:47.340-04:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: a0fe7ba4-9359-44c2-beb8-95e582b7b99a
+      hippotranslation:locale: en
+      myproject:introduction: This is my first installation of Bloomreach 14.5
+      myproject:publicationdate: 0001-01-01T13:00:00+01:00
+      myproject:title: Welcome to my page
+      /myproject:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>With Bloomreach, much is possible. But with great power,
+          comes great responsibility</p>
+    /home-greeting[3]:
+      jcr:primaryType: myproject:contentdocument
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: dd58eadc-0799-4715-bf9b-be008e4c6b2e
+      hippo:availability: [live]
+      hippo:related___pathreference: []
+      hippostd:retainable: false
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2021-05-08T08:40:18.796-04:00
+      hippostdpubwf:lastModificationDate: 2021-05-08T08:41:47.340-04:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2021-05-08T08:41:55.130-04:00
+      hippotranslation:id: a0fe7ba4-9359-44c2-beb8-95e582b7b99a
+      hippotranslation:locale: en
+      myproject:introduction: This is my first installation of Bloomreach 14.5
+      myproject:publicationdate: 0001-01-01T13:00:00+01:00
+      myproject:title: Welcome to my page
+      /myproject:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>With Bloomreach, much is possible. But with great power,
+          comes great responsibility</p>
