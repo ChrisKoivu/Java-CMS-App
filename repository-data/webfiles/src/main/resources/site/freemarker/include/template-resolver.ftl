@@ -50,15 +50,29 @@ how to use:  <@printHeading level="h2" id="" class="" headingSize="hl-small" hea
    </#switch>
 </#macro>
 
-<#function getColSizes colSizeSelected="4-4-4">
-   <#local sizes = []>
-   <#list colSizeSelected?split("-") as x>
-      <#assign classes="small-12 medium-${x} large-${x}">
-      <#--  trick to append to a freemarker array for older versions of freemarker  -->
-      <#assign sizes = sizes + [classes]>
-   </#list>
-   <#return sizes>
+
+<#-- 
+  gets css column sizes for a string as such
+    "4/4/4"
+    "6/6"
+    assumes that medium & large sizes are the same
+    This is for formatting foundation sizes for a 2 column or 3 column row
+-->
+
+<#function getColSizes colSizes>  
+   <#assign arr = []>
+   <#list colSizes?split("/") as x>
+      <#assign classes = "small-12 medium-${x} large-${x}">
+      <#assign arr = arr + [classes]>    
+    </#list>
+    <#return arr>
 </#function>
+
+
+<#-- 
+  function for selecting the template to render the view 
+  based on the name of a dropdown selected in the ui  
+-->
 
 <#function getTemplateName selectedTemplate="panel">
   <#assign trimTemplateName = selectedTemplate?trim>

@@ -1,5 +1,6 @@
 <!doctype html>
 <#include "../include/imports.ftl">
+<#include "../include/template-resolver.ftl">
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
@@ -25,6 +26,8 @@
       </div>
       <div class="row small-12 large-8 columns">
         <@hst.include ref="main"/>
+
+
       </div>
       <div class="row">
         <@hst.include ref="footer"/>
