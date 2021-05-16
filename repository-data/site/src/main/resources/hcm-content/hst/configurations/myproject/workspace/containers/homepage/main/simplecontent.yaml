@@ -1,4 +1,5 @@
 /hst:hst/hst:configurations/myproject/hst:workspace/hst:containers/homepage/main/simplecontent:
+  .meta:order-before: banner
   jcr:primaryType: hst:containeritemcomponent
   hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsDocumentComponent
   hst:iconpath: images/essentials/catalog-component-icons/simple-content.svg

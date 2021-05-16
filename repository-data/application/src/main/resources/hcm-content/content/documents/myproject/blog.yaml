@@ -1,4 +1,5 @@
 /content/documents/myproject/blog:
+  .meta:order-before: banners
   jcr:primaryType: hippostd:folder
   jcr:mixinTypes: ['hippotranslation:translated', 'mix:referenceable']
   jcr:uuid: c3e819f8-2182-4c6f-956d-7dc9328941bc

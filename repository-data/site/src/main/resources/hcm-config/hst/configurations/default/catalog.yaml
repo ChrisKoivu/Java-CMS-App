@@ -46,3 +46,15 @@ definitions:
         hst:iconpath: images/essentials/catalog-component-icons/simple-content.svg
         hst:label: Simple Content
         hst:template: contentpage-main
+      /banner:
+        jcr:primaryType: hst:containeritemcomponent
+        hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsBannerComponent
+        hst:iconpath: images/essentials/catalog-component-icons/banner.svg
+        hst:label: Banner
+        hst:template: essentials-banner
+      /carousel:
+        jcr:primaryType: hst:containeritemcomponent
+        hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsCarouselComponent
+        hst:iconpath: images/essentials/catalog-component-icons/carousel.svg
+        hst:label: Carousel
+        hst:template: essentials-carousel

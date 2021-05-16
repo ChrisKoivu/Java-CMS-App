@@ -4,3 +4,5 @@ definitions:
       jcr:primaryType: hst:catalog
       /myproject-catalog:
         jcr:primaryType: hst:containeritempackage
+        /banner:
+          jcr:primaryType: hst:containeritemcomponent
