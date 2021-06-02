@@ -6,3 +6,16 @@ definitions:
         jcr:primaryType: hst:containeritempackage
         /banner:
           jcr:primaryType: hst:containeritemcomponent
+        /DynamicBanner:
+          jcr:primaryType: hst:componentdefinition
+          hst:componentclassname: org.hippoecm.hst.component.support.bean.dynamic.BaseHstDynamicComponent
+          hst:ctype: Banner
+          hst:label: DynamicBanner
+          /document:
+            jcr:primaryType: hst:dynamicparameter
+            hst:valuetype: text
+            /hst:fieldconfig:
+              jcr:primaryType: hst:jcrpath
+              hst:pickerconfiguration: cms-pickers/documents-only
+              hst:pickerinitialpath: banners
+              hst:relative: true

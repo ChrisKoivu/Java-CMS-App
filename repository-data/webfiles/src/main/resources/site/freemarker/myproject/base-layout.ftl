@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="<@hst.webfile  path="/css/foundation.css"/>" type="text/css"/>
     <link rel="stylesheet" href="<@hst.webfile  path="/css/app.css"/>" type="text/css"/>
     <#if hstRequest.requestContext.channelManagerPreviewRequest>
-      <link rel="stylesheet" href="<@hst.webfile  path="/css/cms-request.css"/>" type="text/css"/>
+      <link rel="stylesheet" href="<@hst.webfile  path="/css/cms-request.css"/>" type="text/css"/>  
     </#if>
     <#--  lets not put scripts in the head ok?  -->
     <@hst.headContributions categoryExcludes="htmlBodyEnd, scripts" xhtml=true/>
@@ -48,6 +48,11 @@
 
 
     <@hst.headContributions categoryIncludes="htmlBodyEnd, scripts" xhtml=true/>
+     <#if hstRequest.requestContext.channelManagerPreviewRequest>
+    
+        <script type="text/javascript" src="<@hst.webfile path="/js/cms-request.js"/>"></script>
+   
+    </#if>
 
   </body>
 </html>
