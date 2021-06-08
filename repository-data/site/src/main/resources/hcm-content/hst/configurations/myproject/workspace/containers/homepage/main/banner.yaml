@@ -1,4 +1,5 @@
 /hst:hst/hst:configurations/myproject/hst:workspace/hst:containers/homepage/main/banner:
+  .meta:order-before: DynamicBanner
   jcr:primaryType: hst:containeritemcomponent
   hst:componentclassname: org.onehippo.cms7.essentials.components.EssentialsBannerComponent
   hst:iconpath: images/essentials/catalog-component-icons/banner.svg

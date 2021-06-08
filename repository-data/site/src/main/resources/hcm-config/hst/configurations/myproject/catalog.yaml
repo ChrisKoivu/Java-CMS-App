@@ -8,7 +8,7 @@ definitions:
           jcr:primaryType: hst:containeritemcomponent
         /DynamicBanner:
           jcr:primaryType: hst:componentdefinition
-          hst:componentclassname: org.hippoecm.hst.component.support.bean.dynamic.BaseHstDynamicComponent
+          hst:componentclassname: org.example.components.DynamoComponent
           hst:ctype: Banner
           hst:label: DynamicBanner
           /document:
@@ -19,3 +19,8 @@ definitions:
               hst:pickerconfiguration: cms-pickers/documents-only
               hst:pickerinitialpath: banners
               hst:relative: true
+          /background:
+            jcr:primaryType: hst:dynamicparameter
+            /hst:fieldconfig:
+              jcr:primaryType: hst:dropdown
+              hst:value: [muted]

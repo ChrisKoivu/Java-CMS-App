@@ -74,3 +74,94 @@
       /myproject:link:
         jcr:primaryType: hippo:mirror
         hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+  /test:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 26851432-1e28-4d67-8960-1ed6a9827ebe
+    hippo:name: Test
+    hippo:versionHistory: cd2a1e7b-31dc-4cd0-92bd-a6f2128e0cc6
+    /test[1]:
+      jcr:primaryType: myproject:bannerdocument
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: dab8afa8-f39d-40ea-8a84-bb5ceac04ead
+      hippo:availability: []
+      hippo:related___pathreference: []
+      hippostd:retainable: false
+      hippostd:state: draft
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2021-05-16T07:30:53.105-04:00
+      hippostdpubwf:lastModificationDate: 2021-05-16T07:30:53.105-04:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 2ae5bde1-3f33-4648-94b4-c170a9210153
+      hippotranslation:locale: en
+      myproject:title: This is a test banner document
+      /myproject:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>This is a test banner document that provides a document
+          to present a greeting and content to the world</p>
+      /myproject:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+      /myproject:link:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+    /test[2]:
+      jcr:primaryType: myproject:bannerdocument
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 55f6ef17-60c9-4b4f-9bc0-e8f75779d47b
+      hippo:availability: [preview]
+      hippo:related___pathreference: []
+      hippostd:retainable: false
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2021-05-16T07:30:53.105-04:00
+      hippostdpubwf:lastModificationDate: 2021-05-16T07:32:02.607-04:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 2ae5bde1-3f33-4648-94b4-c170a9210153
+      hippotranslation:locale: en
+      myproject:title: This is a test banner document
+      /myproject:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>This is a test banner document that provides a document
+          to present a greeting and content to the world</p>
+      /myproject:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+      /myproject:link:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+    /test[3]:
+      jcr:primaryType: myproject:bannerdocument
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 285e6a7d-f351-41de-96d3-b271f80428f1
+      hippo:availability: [live]
+      hippo:related___pathreference: []
+      hippostd:retainable: false
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2021-05-16T07:30:53.105-04:00
+      hippostdpubwf:lastModificationDate: 2021-05-16T07:32:02.607-04:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2021-05-16T07:32:10.649-04:00
+      hippotranslation:id: 2ae5bde1-3f33-4648-94b4-c170a9210153
+      hippotranslation:locale: en
+      myproject:title: This is a test banner document
+      /myproject:content:
+        jcr:primaryType: hippostd:html
+        hippostd:content: <p>This is a test banner document that provides a document
+          to present a greeting and content to the world</p>
+      /myproject:image:
+        jcr:primaryType: hippogallerypicker:imagelink
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
+        hippo:facets: []
+        hippo:modes: []
+        hippo:values: []
+      /myproject:link:
+        jcr:primaryType: hippo:mirror
+        hippo:docbase: cafebabe-cafe-babe-cafe-babecafebabe
