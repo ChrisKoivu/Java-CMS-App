@@ -1,0 +1,28 @@
+/content/documents/administration/value-lists/form-settings:
+  jcr:primaryType: hippo:handle
+  jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+  jcr:uuid: e5261de2-7450-47e9-9e9f-e120856ba9dc
+  hippo:name: Form Settings
+  /form-settings:
+    jcr:primaryType: selection:valuelist
+    jcr:mixinTypes: ['hippotranslation:translated', 'mix:referenceable']
+    jcr:uuid: df5b13cb-bfa5-435d-bb84-b9b88a47c162
+    hippo:availability: [live, preview]
+    hippotranslation:id: 962ebca4-20a8-4b5e-8791-58ea7a64d81c
+    hippotranslation:locale: en
+    /selection:listitem[1]:
+      jcr:primaryType: selection:listitem
+      selection:key: github
+      selection:label: GitHub
+    /selection:listitem[2]:
+      jcr:primaryType: selection:listitem
+      selection:key: stackoverflow
+      selection:label: Stack Overflow
+    /selection:listitem[3]:
+      jcr:primaryType: selection:listitem
+      selection:key: twitter
+      selection:label: Twitter
+    /selection:listitem[4]:
+      jcr:primaryType: selection:listitem
+      selection:key: linkedin
+      selection:label: LinkedIn

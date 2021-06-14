@@ -11,6 +11,7 @@ definitions:
           hst:componentclassname: org.example.components.DynamoComponent
           hst:ctype: Banner
           hst:label: DynamicBanner
+          hst:template: dynamic-banner
           /document:
             jcr:primaryType: hst:dynamicparameter
             hst:valuetype: text
@@ -24,3 +25,18 @@ definitions:
             /hst:fieldconfig:
               jcr:primaryType: hst:dropdown
               hst:value: [muted]
+          /bundleid:
+            jcr:primaryType: hst:dynamicparameter
+            hst:valuetype: text
+            hst:defaultvalue: essentials.global
+            hst:hideinchannelmanager: true
+          /valuelist:
+            jcr:primaryType: hst:dynamicparameter
+            hst:defaultvalue: formSettings
+            hst:hideinchannelmanager: true
+            hst:valuetype: text
+          /bundlelocale:
+            jcr:primaryType: hst:dynamicparameter
+            hst:defaultvalue: 'null'
+            hst:hideinchannelmanager: true
+            hst:valuetype: text

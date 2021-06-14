@@ -1,14 +1,21 @@
 package org.example.components;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import org.hippoecm.hst.component.support.bean.dynamic.BaseHstDynamicComponent;
 import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
+import org.onehippo.forge.selection.hst.contentbean.ValueList;
+import org.onehippo.forge.selection.hst.util.SelectionUtil;
+import org.onehippo.repository.l10n.LocalizationService;
 import org.hippoecm.hst.configuration.components.DynamicComponentInfo;
+import org.hippoecm.hst.container.RequestContextProvider;
+import org.hippoecm.hst.resourcebundle.ResourceBundleUtils;
 
 
 @ParametersInfo(type = DynamicComponentInfo.class)
@@ -28,8 +35,46 @@ public class DynamoComponent extends BaseHstDynamicComponent {
         	   parameters.put(entry.getKey(), entry.getValue());
         	}
         }
-        System.out.println("<== parameter values are: " + parameters + " ======>");
+        
+        ResourceBundle bundle = retrieveResourceBundle("essentials.global", null);
+        System.out.println("<===== resource bundle: " + bundle + " ======>");
+        
         request.setAttribute("parameters", parameters);
-           
+        
+        String valuelistKey = (String) parameters.get("valuelist");
+        request.setAttribute(valuelistKey, getValueList(valuelistKey));        
     }
+    
+    
+    /**
+     * allows for adding a value list to the request object from the delivery
+     * tier based on the key set in the value list manager
+     * @param identifier
+     * @return Map
+     */
+    
+    private Map<String, String> getValueList(String identifier) {        
+        final ValueList chosenValueList = 
+                SelectionUtil.getValueListByIdentifier(identifier, RequestContextProvider.get());
+            if (chosenValueList != null) {
+            	return SelectionUtil.valueListAsMap(chosenValueList);
+            }
+			return null;
+    }  
+    
+    /**
+     * returns resource bundle based on identifier and locale
+     * @param identifier
+     * @param locale
+     * @return
+     */
+    private static ResourceBundle retrieveResourceBundle(String identifier, Locale locale) {
+    	if(identifier !=null) {
+    		ResourceBundle rb = ResourceBundleUtils.getBundle(identifier, locale);
+    	    return rb;
+    	}
+    	return null;
+    }
+    
+    
 }

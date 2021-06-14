@@ -1,5 +1,5 @@
 /hst:hst/hst:configurations/myproject/hst:workspace/hst:containers/homepage/main/DynamicBanner:
   jcr:primaryType: hst:containeritemcomponent
   hst:componentdefinition: hst:components/myproject-catalog/DynamicBanner
-  hst:parameternames: [background, document]
-  hst:parametervalues: [muted, banners/test]
+  hst:parameternames: [background, document, bundleid]
+  hst:parametervalues: [muted, banners/test, '']
