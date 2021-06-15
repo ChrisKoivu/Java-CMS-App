@@ -1,5 +1,6 @@
 package org.example.components;
 
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -36,8 +37,8 @@ public class DynamoComponent extends BaseHstDynamicComponent {
         	}
         }
         
-        ResourceBundle bundle = retrieveResourceBundle("essentials.global", null);
-        System.out.println("<===== resource bundle: " + bundle + " ======>");
+        HashMap<String, String> bundle = retrieveResourceBundle("essentials.global", null);
+        request.setAttribute("resourceBundle", bundle);
         
         request.setAttribute("parameters", parameters);
         
@@ -68,10 +69,18 @@ public class DynamoComponent extends BaseHstDynamicComponent {
      * @param locale
      * @return
      */
-    private static ResourceBundle retrieveResourceBundle(String identifier, Locale locale) {
+    private static HashMap<String, String> retrieveResourceBundle(String identifier, Locale locale) {
     	if(identifier !=null) {
     		ResourceBundle rb = ResourceBundleUtils.getBundle(identifier, locale);
-    	    return rb;
+    		Enumeration<String>	bundleKeys = rb.getKeys();
+    	    Enumeration<String> e = bundleKeys;
+    	    HashMap<String, String> rbMap = new HashMap<String, String>();
+    	    
+    	    while (e.hasMoreElements()) {
+    	        String param = e.nextElement();
+    	        rbMap.put(param, rb.getString(param));
+    	    }
+    	    return rbMap;
     	}
     	return null;
     }
