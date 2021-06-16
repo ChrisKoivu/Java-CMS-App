@@ -3,16 +3,13 @@
 <#-- @ftlvariable name="document" type="org.example.beans.Banner" -->
 <#if document??>
    <div class="has-edit-button">
-   <h4>${document.title} </h4>
+      <@hst.manageContent hippobean=document />
+      <h4>${document.title} </h4>
 
-   <#list resourceBundle as k,v>
-     ${"resource bundle key: " + k + ", resource bundle value: " + v}
-   </#list>
-   <#list formSettings as k, v>
-     ${"Key: " + k + ", Value: " + v}
-   </#list>
-
-   ${resourceBundle["footer.text"]}
+      <#list essentialsglobal as k,v>
+        ${"resource bundle key: " + k + ", resource bundle value: " + v}
+      </#list>
+  </div>
 
    
 <#elseif editMode>
