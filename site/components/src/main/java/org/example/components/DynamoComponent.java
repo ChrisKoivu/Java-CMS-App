@@ -37,13 +37,23 @@ public class DynamoComponent extends BaseHstDynamicComponent {
         	}
         }
         
-        HashMap<String, String> bundle = getResourceBundle("essentials.global", null);
-        request.setAttribute("resourceBundle", bundle);
+        if(parameters.get("resourcebundle")!=null) {
+        	Locale locale = null;
+        	if(parameters.get("resourcebundlelocale")!=null) {
+        		locale = (Locale) parameters.get("resourcebundlelocale");
+        	}
+        	
+        	String resourcebundleKey = (String) parameters.get("resourcebundle");
+        	HashMap<String, String> bundle = getResourceBundle(resourcebundleKey, locale);
+            request.setAttribute(resourcebundleKey.replace(".",""), bundle);
+        }
         
-        request.setAttribute("parameters", parameters);
-        
-        String valuelistKey = (String) parameters.get("valuelist");
-        request.setAttribute(valuelistKey, getValueList(valuelistKey));        
+        if(parameters.get("valuelist")!=null) {
+            String valuelistKey = (String) parameters.get("valuelist");
+            request.setAttribute(valuelistKey, getValueList(valuelistKey));
+        }
+
+        request.setAttribute("parameters", parameters);             
     }
     
     
