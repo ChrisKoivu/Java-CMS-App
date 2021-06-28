@@ -2,26 +2,30 @@ package org.example.components;
 
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import org.example.info.SectionInfo;
 import org.hippoecm.hst.component.support.bean.dynamic.BaseHstDynamicComponent;
 import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
+import org.hippoecm.hst.core.parameters.Parameter;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
 import org.onehippo.forge.selection.hst.contentbean.ValueList;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
 import org.onehippo.repository.l10n.LocalizationService;
 import org.hippoecm.hst.configuration.components.DynamicComponentInfo;
+import org.hippoecm.hst.configuration.components.DynamicParameter;
 import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.resourcebundle.ResourceBundleUtils;
 
 
-@ParametersInfo(type = DynamicComponentInfo.class)
+@ParametersInfo(type = SectionInfo.class)
 public class DynamoComponent extends BaseHstDynamicComponent {
-
+ 
     @Override
     public void doBeforeRender(HstRequest request, HstResponse response) throws HstComponentException {
         super.doBeforeRender(request, response);
