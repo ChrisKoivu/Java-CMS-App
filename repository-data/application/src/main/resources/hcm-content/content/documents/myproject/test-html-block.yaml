@@ -1,0 +1,86 @@
+/content/documents/myproject/test-html-block:
+  jcr:primaryType: hippo:handle
+  jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+  jcr:uuid: 73a17af5-8c85-46fe-8aa6-36a0bb5c007c
+  hippo:name: Test Html Block
+  hippo:versionHistory: c7f84154-70cd-4c6e-a2a2-0ab3e771dd50
+  /test-html-block[1]:
+    jcr:primaryType: myproject:HtmlContent
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: d378879e-b34a-4f89-9eac-a15656582e24
+    hippo:availability: []
+    hippostd:holder: admin
+    hippostd:retainable: false
+    hippostd:state: draft
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2021-07-25T09:01:03.680-04:00
+    hippostdpubwf:lastModificationDate: 2021-07-25T09:28:45.220-04:00
+    hippostdpubwf:lastModifiedBy: admin
+    hippotranslation:id: 68758b0b-936f-4933-b73b-ba22c391e47f
+    hippotranslation:locale: en
+    /myproject:html:
+      jcr:primaryType: hippostd:html
+      hippostd:content: |-
+        <section class="banner core2" aria-labelledby="employerPlans">
+            <div class="row">
+                <div class="columns small-12 medium-12 large-12 text-center">
+                    <div class="content">
+                        <h2 class="hl-large" id="employerPlans">Are you an employer?</h2>
+                        <p>We can provide a community of care for your entire team to help them stay healthy and thrive.</p><a class="button primary top-1x" href="/employer">Shop Group Plans</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+  /test-html-block[2]:
+    jcr:primaryType: myproject:HtmlContent
+    jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+    jcr:uuid: dce518a2-e7ed-445e-b133-46858c57ae5a
+    hippo:availability: [preview]
+    hippostd:retainable: false
+    hippostd:state: unpublished
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2021-07-25T09:01:03.680-04:00
+    hippostdpubwf:lastModificationDate: 2021-07-25T09:26:53.443-04:00
+    hippostdpubwf:lastModifiedBy: admin
+    hippotranslation:id: 68758b0b-936f-4933-b73b-ba22c391e47f
+    hippotranslation:locale: en
+    /myproject:html:
+      jcr:primaryType: hippostd:html
+      hippostd:content: |-
+        <section class="banner core2" aria-labelledby="employerPlans">
+            <div class="row">
+                <div class="columns small-12 medium-12 large-12 text-center">
+                    <div class="content">
+                        <h2 class="hl-large" id="employerPlans">Are you an employer?</h2>
+                        <p>We can provide a community of care for your entire team to help them stay healthy and thrive.</p><a class="button primary top-1x" href="/employer">Shop Group Plans</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+  /test-html-block[3]:
+    jcr:primaryType: myproject:HtmlContent
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: 27619717-2354-4988-92ab-6276a4a65db3
+    hippo:availability: [live]
+    hippostd:retainable: false
+    hippostd:state: published
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2021-07-25T09:01:03.680-04:00
+    hippostdpubwf:lastModificationDate: 2021-07-25T09:26:53.443-04:00
+    hippostdpubwf:lastModifiedBy: admin
+    hippostdpubwf:publicationDate: 2021-07-25T09:27:18.180-04:00
+    hippotranslation:id: 68758b0b-936f-4933-b73b-ba22c391e47f
+    hippotranslation:locale: en
+    /myproject:html:
+      jcr:primaryType: hippostd:html
+      hippostd:content: |-
+        <section class="banner core2" aria-labelledby="employerPlans">
+            <div class="row">
+                <div class="columns small-12 medium-12 large-12 text-center">
+                    <div class="content">
+                        <h2 class="hl-large" id="employerPlans">Are you an employer?</h2>
+                        <p>We can provide a community of care for your entire team to help them stay healthy and thrive.</p><a class="button primary top-1x" href="/employer">Shop Group Plans</a>
+                    </div>
+                </div>
+            </div>
+        </section>

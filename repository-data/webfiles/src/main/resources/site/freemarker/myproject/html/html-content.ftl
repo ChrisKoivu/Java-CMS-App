@@ -4,14 +4,10 @@
 <#if document??>
    <div class="has-edit-button">
       <@hst.manageContent hippobean=document />
-      <h1>Html Template </h1>
+       <!-- html content template -->
       
-      <#list document.htmlContent as block>
-      <#--  ${block.content}  -->
-<#--       
-       <hst:html hippohtml="${block.content}" fullyQualifiedLinks="true" />  -->
-       <hst:html formattedhtml="${block.content}" /> 
-       <hst:html text="${block.getContent()}" />
+      <#list document.html as block> 
+         <@hst.html hippohtml=block />
       </#list>
   </div>
 

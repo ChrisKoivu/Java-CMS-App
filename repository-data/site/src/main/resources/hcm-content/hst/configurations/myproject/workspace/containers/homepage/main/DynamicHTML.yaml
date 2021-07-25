@@ -1,0 +1,6 @@
+/hst:hst/hst:configurations/myproject/hst:workspace/hst:containers/homepage/main/DynamicHTML:
+  .meta:order-before: DynamicBanner
+  jcr:primaryType: hst:containeritemcomponent
+  hst:componentdefinition: hst:components/myproject-catalog/DynamicHTML
+  hst:parameternames: [background, document, valuelist, pageSize, resourcebundle]
+  hst:parametervalues: ['', test-html-block, '', '10', '']

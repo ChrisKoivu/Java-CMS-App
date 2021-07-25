@@ -35,3 +35,31 @@ definitions:
             hst:defaultvalue: essentials.global
             hst:hideinchannelmanager: true
             hst:valuetype: text
+        /DynamicHTML:
+          jcr:primaryType: hst:componentdefinition
+          hst:componentclassname: org.example.components.DynamoComponent
+          hst:ctype: HtmlDocument
+          hst:label: DynamicHtml
+          hst:template: dynamic-html
+          /document:
+            jcr:primaryType: hst:dynamicparameter
+            hst:valuetype: text
+            /hst:fieldconfig:
+              jcr:primaryType: hst:jcrpath
+              hst:pickerconfiguration: cms-pickers/documents-only
+              hst:relative: true
+          /background:
+            jcr:primaryType: hst:dynamicparameter
+            /hst:fieldconfig:
+              jcr:primaryType: hst:dropdown
+              hst:value: [muted]
+          /valuelist:
+            jcr:primaryType: hst:dynamicparameter
+            hst:defaultvalue: formSettings
+            hst:hideinchannelmanager: true
+            hst:valuetype: text
+          /resourcebundle:
+            jcr:primaryType: hst:dynamicparameter
+            hst:defaultvalue: essentials.global
+            hst:hideinchannelmanager: true
+            hst:valuetype: text

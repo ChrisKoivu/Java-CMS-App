@@ -32,3 +32,6 @@ definitions:
       /dynamic-banner:
         jcr:primaryType: hst:template
         hst:renderpath: webfile:/freemarker/myproject/banner/dynamic-banner.ftl
+      /dynamic-html:
+        jcr:primaryType: hst:template
+        hst:renderpath: webfile:/freemarker/myproject/html/html-content.ftl
