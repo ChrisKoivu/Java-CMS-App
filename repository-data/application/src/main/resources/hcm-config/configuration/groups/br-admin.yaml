@@ -1,0 +1,11 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:groups/br-admin:
+      jcr:primaryType: hipposys:group
+      hipposys:description: Users who have admin permissions for the platform
+      hipposys:securityprovider: internal
+      hipposys:members:
+        .meta:category: system
+        .meta:add-new-system-values: true
+        type: string
+        value: [j2b0]

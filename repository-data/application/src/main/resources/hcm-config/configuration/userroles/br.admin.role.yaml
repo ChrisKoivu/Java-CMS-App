@@ -1,0 +1,6 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:userroles/br.admin.role:
+      jcr:primaryType: hipposys:userrole
+      hipposys:description: Role for br admins
+      hipposys:userroles: [xm.content.admin]
