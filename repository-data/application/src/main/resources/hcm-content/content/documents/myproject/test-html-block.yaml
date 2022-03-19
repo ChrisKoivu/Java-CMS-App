@@ -1,4 +1,5 @@
 /content/documents/myproject/test-html-block:
+  .meta:order-before: home-greeting
   jcr:primaryType: hippo:handle
   jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
   jcr:uuid: 73a17af5-8c85-46fe-8aa6-36a0bb5c007c

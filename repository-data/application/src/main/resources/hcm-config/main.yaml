@@ -3,3 +3,6 @@ definitions:
     myproject:
       uri: http://www.myproject.com/myproject/nt/1.0
       cnd: namespaces/myproject.cnd
+    deprecated:
+      uri: http://www.myproject.com/deprecated/nt/1.0
+      cnd: deprecated.cnd

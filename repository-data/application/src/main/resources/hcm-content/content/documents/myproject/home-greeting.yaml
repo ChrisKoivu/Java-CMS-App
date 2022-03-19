@@ -1,0 +1,52 @@
+/content/documents/myproject/home-greeting:
+  jcr:primaryType: hippo:handle
+  jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+  jcr:uuid: c4d03fb2-ed5f-41c2-9d4e-9ff31cb98b95
+  hippo:name: Home-Greeting
+  hippo:versionHistory: 83db45e1-cabb-48fc-b75e-84869f73fbaf
+  /home-greeting[1]:
+    jcr:primaryType: deprecated:Test
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: 61c34288-ff03-4e3f-9957-4d32cdde6640
+    deprecated:boolean: true
+    deprecated:value: Test
+    hippo:availability: []
+    hippostd:retainable: false
+    hippostd:state: draft
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2021-09-07T12:20:09.041-04:00
+    hippostdpubwf:lastModificationDate: 2021-09-07T12:20:28.822-04:00
+    hippostdpubwf:lastModifiedBy: admin
+    hippotranslation:id: b8faaf5a-1024-42b9-bbd0-774f4662354e
+    hippotranslation:locale: en
+  /home-greeting[2]:
+    jcr:primaryType: deprecated:Test
+    jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+    jcr:uuid: aae2df13-8add-4ac0-8760-0fe004addbc6
+    deprecated:boolean: true
+    deprecated:value: Test
+    hippo:availability: [preview]
+    hippostd:retainable: false
+    hippostd:state: unpublished
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2021-09-07T12:20:09.041-04:00
+    hippostdpubwf:lastModificationDate: 2021-09-07T12:20:27.614-04:00
+    hippostdpubwf:lastModifiedBy: admin
+    hippotranslation:id: b8faaf5a-1024-42b9-bbd0-774f4662354e
+    hippotranslation:locale: en
+  /home-greeting[3]:
+    jcr:primaryType: deprecated:Test
+    jcr:mixinTypes: ['mix:referenceable']
+    jcr:uuid: f61b84a8-e819-4c2a-91b1-aa387eb67c9c
+    deprecated:boolean: true
+    deprecated:value: Test
+    hippo:availability: [live]
+    hippostd:retainable: false
+    hippostd:state: published
+    hippostdpubwf:createdBy: admin
+    hippostdpubwf:creationDate: 2021-09-07T12:20:09.041-04:00
+    hippostdpubwf:lastModificationDate: 2021-09-07T12:20:27.614-04:00
+    hippostdpubwf:lastModifiedBy: admin
+    hippostdpubwf:publicationDate: 2021-09-07T12:20:34.926-04:00
+    hippotranslation:id: b8faaf5a-1024-42b9-bbd0-774f4662354e
+    hippotranslation:locale: en
