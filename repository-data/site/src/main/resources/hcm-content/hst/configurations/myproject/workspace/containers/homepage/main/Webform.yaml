@@ -2,3 +2,5 @@
   .meta:order-before: DynamicHTML
   jcr:primaryType: hst:containeritemcomponent
   hst:componentdefinition: hst:components/myproject-catalog/Webform
+  hst:parameternames: [document, valuelist, resourcebundle]
+  hst:parametervalues: [forms/newform, '', '']

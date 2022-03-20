@@ -4,11 +4,12 @@
 <#if document??>
    <div class="has-edit-button">
       <@hst.manageContent hippobean=document />
-      <h4>${document.title} </h4>
+      <h4>${document.formTitle} </h4>
       <#-- all the available form fields that can be rendered
           TODO: add checkboxes for visibility, and a required fields parameter in the document 
       -->
-      <form>
+      <@hst.actionURL var="actionLink"/>
+      <form action="${actionLink}" method="post">
         <div class="grid-container">
           <div class="grid-x grid-padding-x">
             <div class="medium-6 cell">
@@ -59,6 +60,11 @@
               </label>
             </div>
           </div>
+          <div class="input-group"> 
+            <div class="input-group-button">
+              <input type="submit" class="button" value="Submit" style="padding:12px;">
+            </div>
+         </div>
         </div>
      </form>  
   </div>

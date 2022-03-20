@@ -26,16 +26,24 @@ public class Webform extends EssentialsDocumentComponent{
 	
 	 private static Logger log = LoggerFactory.getLogger(EssentialsDocumentComponent.class);
      
+	 // doAction is called on form post, where logic can be performed, and then flow goes to 
+	 // doBeforeRender. If no post, or post has already been completed (ie, a page refresh)
+	 // the flow continues to doBeforeRender
 	 @Override
 	 public void doAction(HstRequest request, HstResponse response) throws HstComponentException {
- 
+
+		 
+		 HttpSession session = request.getSession();
+		 // clear previous state if set, will set if valid submission
+		 session.setAttribute("formState", null);
+		 
 			
 		 FormMap map = new FormMap(request, new String[]{"firstName", "lastName","phone","email","streetAddress","city", "state", "zipcode"}); 
 		 
 		 
-		 // save the form state to the session for processing
-		 HttpSession session = request.getSession();
+		// save the form state to the session for processing after validation
 		 session.setAttribute("formState", map);
+		 log.debug("do action method");
 		 
 		 
 		   

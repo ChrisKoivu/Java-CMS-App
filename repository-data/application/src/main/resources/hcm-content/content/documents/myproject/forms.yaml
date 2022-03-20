@@ -5,3 +5,82 @@
   hippostd:foldertype: [new-translated-folder, new-document]
   hippotranslation:id: 0fd1dfd3-42e9-42cc-8c32-818e29359ede
   hippotranslation:locale: en
+  /newform:
+    jcr:primaryType: hippo:handle
+    jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
+    jcr:uuid: 532564b8-a0af-4e6a-b87b-db6c490a8ce8
+    hippo:name: NewForm
+    hippo:versionHistory: b81e6462-b40e-40b0-ad00-f99a26b4bd77
+    /newform[1]:
+      jcr:primaryType: myproject:Webform
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: cc2804bb-e669-467a-9687-e4a2d4b5205d
+      hippo:availability: []
+      hippostd:retainable: false
+      hippostd:state: draft
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2022-03-20T08:48:11.985-04:00
+      hippostdpubwf:lastModificationDate: 2022-03-20T08:59:48.294-04:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 19454160-6451-4221-badd-a6e0027b1aa6
+      hippotranslation:locale: en
+      myproject:formTitle: A New Form
+      /myproject:formFields:
+        jcr:primaryType: myproject:formFields
+        myproject:cityVisible: false
+        myproject:emailVisible: true
+        myproject:firstNameVisible: true
+        myproject:lastNameVisible: true
+        myproject:phoneVisible: false
+        myproject:stateVisible: false
+        myproject:streetAddressVisible: false
+        myproject:zipVisible: true
+    /newform[2]:
+      jcr:primaryType: myproject:Webform
+      jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+      jcr:uuid: 189944f7-6e65-4758-ac1c-1f03f6649c22
+      hippo:availability: [preview]
+      hippostd:retainable: false
+      hippostd:state: unpublished
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2022-03-20T08:48:11.985-04:00
+      hippostdpubwf:lastModificationDate: 2022-03-20T08:59:48.102-04:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippotranslation:id: 19454160-6451-4221-badd-a6e0027b1aa6
+      hippotranslation:locale: en
+      myproject:formTitle: A New Form
+      /myproject:formFields:
+        jcr:primaryType: myproject:formFields
+        myproject:cityVisible: false
+        myproject:emailVisible: true
+        myproject:firstNameVisible: true
+        myproject:lastNameVisible: true
+        myproject:phoneVisible: false
+        myproject:stateVisible: false
+        myproject:streetAddressVisible: false
+        myproject:zipVisible: true
+    /newform[3]:
+      jcr:primaryType: myproject:Webform
+      jcr:mixinTypes: ['mix:referenceable']
+      jcr:uuid: 319fbe15-789e-4414-b7bd-fe6c3dbd35ff
+      hippo:availability: [live]
+      hippostd:retainable: false
+      hippostd:state: published
+      hippostdpubwf:createdBy: admin
+      hippostdpubwf:creationDate: 2022-03-20T08:48:11.985-04:00
+      hippostdpubwf:lastModificationDate: 2022-03-20T08:59:48.102-04:00
+      hippostdpubwf:lastModifiedBy: admin
+      hippostdpubwf:publicationDate: 2022-03-20T08:59:58.914-04:00
+      hippotranslation:id: 19454160-6451-4221-badd-a6e0027b1aa6
+      hippotranslation:locale: en
+      myproject:formTitle: A New Form
+      /myproject:formFields:
+        jcr:primaryType: myproject:formFields
+        myproject:cityVisible: false
+        myproject:emailVisible: true
+        myproject:firstNameVisible: true
+        myproject:lastNameVisible: true
+        myproject:phoneVisible: false
+        myproject:stateVisible: false
+        myproject:streetAddressVisible: false
+        myproject:zipVisible: true
