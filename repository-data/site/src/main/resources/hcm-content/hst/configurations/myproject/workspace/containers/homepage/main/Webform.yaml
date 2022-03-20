@@ -1,0 +1,4 @@
+/hst:hst/hst:configurations/myproject/hst:workspace/hst:containers/homepage/main/Webform:
+  .meta:order-before: DynamicHTML
+  jcr:primaryType: hst:containeritemcomponent
+  hst:componentdefinition: hst:components/myproject-catalog/Webform
