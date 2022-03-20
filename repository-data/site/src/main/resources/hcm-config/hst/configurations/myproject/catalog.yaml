@@ -63,3 +63,19 @@ definitions:
             hst:defaultvalue: essentials.global
             hst:hideinchannelmanager: true
             hst:valuetype: text
+        /Webform:
+          jcr:primaryType: hst:componentdefinition
+          hst:componentclassname: org.example.components.classes.Webform
+          hst:ctype: Form
+          hst:label: Webform
+          hst:template: form-template
+          /valuelist:
+            jcr:primaryType: hst:dynamicparameter
+            hst:defaultvalue: formSettings
+            hst:hideinchannelmanager: true
+            hst:valuetype: text
+          /resourcebundle:
+            jcr:primaryType: hst:dynamicparameter
+            hst:defaultvalue: essentials.global
+            hst:hideinchannelmanager: true
+            hst:valuetype: text
