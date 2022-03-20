@@ -1,0 +1,7 @@
+/content/documents/myproject/forms:
+  jcr:primaryType: hippostd:folder
+  jcr:mixinTypes: ['hippotranslation:translated', 'mix:versionable']
+  jcr:uuid: 6250e2d3-bd79-43fa-a6f1-c8b69c262d95
+  hippostd:foldertype: [new-translated-folder, new-document]
+  hippotranslation:id: 0fd1dfd3-42e9-42cc-8c32-818e29359ede
+  hippotranslation:locale: en

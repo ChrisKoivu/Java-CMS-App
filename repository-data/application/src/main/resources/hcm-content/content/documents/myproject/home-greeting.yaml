@@ -1,4 +1,5 @@
 /content/documents/myproject/home-greeting:
+  .meta:order-before: forms
   jcr:primaryType: hippo:handle
   jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
   jcr:uuid: c4d03fb2-ed5f-41c2-9d4e-9ff31cb98b95
