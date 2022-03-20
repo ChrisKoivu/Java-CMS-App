@@ -80,7 +80,8 @@ public class FormValidation {
 		for (String field : fields) {
 			String val = map.getField(field).getValue();
 			String key = map.getField(field).getName(); 
-			if(!val.matches(rules.get(key))) {
+			// validate all non blank fields for valid entry
+			if(!val.matches(rules.get(key)) && StringUtils.isNotBlank(key)) {
 				System.out.println("field for  " + key + ", with value : " + val + ", does not match rule: " + rules.get(key));
 				invalidEntries.add(key);
 			}
