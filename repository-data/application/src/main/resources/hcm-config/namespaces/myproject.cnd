@@ -10,6 +10,9 @@
 [myproject:HtmlContent] > hippostd:relaxed, hippotranslation:translated, myproject:basedocument
   orderable
 
+[myproject:Webform] > hippostd:relaxed, hippotranslation:translated, myproject:basedocument
+  orderable
+
 [myproject:account] > hippo:compound, hippostd:relaxed
   orderable
 
@@ -23,5 +26,11 @@
   orderable
 
 [myproject:contentdocument] > hippostd:relaxed, hippotranslation:translated, myproject:basedocument
+  orderable
+
+[myproject:formFields] > hippo:compound, hippostd:relaxed
+  orderable
+
+[myproject:requiredFields] > hippo:compound, hippostd:relaxed
   orderable
 

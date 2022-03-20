@@ -1,0 +1,113 @@
+definitions:
+  config:
+    /hippo:namespaces/myproject/Webform:
+      jcr:primaryType: hipposysedit:templatetype
+      jcr:mixinTypes: ['editor:editable', 'mix:referenceable']
+      jcr:uuid: a961c5d2-34bd-4e90-876b-2c083ab145d0
+      /hipposysedit:nodetype:
+        jcr:primaryType: hippo:handle
+        jcr:mixinTypes: ['mix:referenceable']
+        jcr:uuid: 793c8178-98a9-4cc6-8565-5e7be79b67e7
+        /hipposysedit:nodetype:
+          jcr:primaryType: hipposysedit:nodetype
+          jcr:mixinTypes: ['mix:referenceable', 'hipposysedit:remodel']
+          jcr:uuid: 07ad66aa-dfe0-493b-b6e2-1df2b351603a
+          hipposysedit:node: true
+          hipposysedit:supertype: ['myproject:basedocument', 'hippostd:relaxed', 'hippotranslation:translated']
+          hipposysedit:uri: http://www.myproject.com/myproject/nt/1.0
+          /formFields:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: myproject:formFields
+            hipposysedit:primary: false
+            hipposysedit:type: myproject:formFields
+            hipposysedit:validators: [optional]
+          /requiredFields:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: myproject:requiredFields
+            hipposysedit:primary: false
+            hipposysedit:type: myproject:requiredFields
+            hipposysedit:validators: [optional]
+          /contentBelowForm:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: myproject:contentBelowForm
+            hipposysedit:primary: false
+            hipposysedit:type: hippostd:html
+            hipposysedit:validators: [optional]
+          /formTitle:
+            jcr:primaryType: hipposysedit:field
+            hipposysedit:mandatory: false
+            hipposysedit:multiple: false
+            hipposysedit:ordered: false
+            hipposysedit:path: myproject:formTitle
+            hipposysedit:primary: false
+            hipposysedit:type: String
+            hipposysedit:validators: [optional]
+      /hipposysedit:prototypes:
+        jcr:primaryType: hipposysedit:prototypeset
+        /hipposysedit:prototype:
+          jcr:primaryType: myproject:Webform
+          hippostd:holder: holder
+          hippostd:state: draft
+          hippostdpubwf:createdBy: ''
+          hippostdpubwf:lastModifiedBy: ''
+          hippotranslation:id: document-type-locale-id
+          hippotranslation:locale: document-type-locale
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: 4c3798e2-b4c6-478d-85bb-4e7c3240ce87
+          hippostdpubwf:lastModificationDate: 2022-03-20T08:16:05.726-04:00
+          hippostdpubwf:creationDate: 2022-03-20T08:16:05.728-04:00
+      /editor:templates:
+        jcr:primaryType: editor:templateset
+        /_default_:
+          jcr:primaryType: frontend:plugincluster
+          frontend:properties: [mode]
+          frontend:references: [wicket.model, model.compareTo, engine, validator.id]
+          frontend:services: [wicket.id, validator.id]
+          /root:
+            jcr:primaryType: frontend:plugin
+            item: ${cluster.id}.field
+            plugin.class: org.hippoecm.frontend.service.render.ListViewPlugin
+          /formTitle:
+            jcr:primaryType: frontend:plugin
+            caption: Title
+            field: formTitle
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.PropertyFieldPlugin
+            wicket.id: ${cluster.id}.field
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /formFields:
+            jcr:primaryType: frontend:plugin
+            caption: Form Fields
+            field: formFields
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: Check the boxes of form fields that you want visible on the form
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /requiredFields:
+            jcr:primaryType: frontend:plugin
+            caption: Required Form FIelds
+            field: requiredFields
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: Check the boxes of form fields that you want required on the form
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
+          /contentBelowForm:
+            jcr:primaryType: frontend:plugin
+            caption: Content
+            field: contentBelowForm
+            plugin.class: org.hippoecm.frontend.editor.plugins.field.NodeFieldPlugin
+            wicket.id: ${cluster.id}.field
+            hint: ''
+            /cluster.options:
+              jcr:primaryType: frontend:pluginconfig
