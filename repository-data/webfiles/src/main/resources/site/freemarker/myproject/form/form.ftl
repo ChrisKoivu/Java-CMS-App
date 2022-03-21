@@ -1,72 +1,91 @@
 <#include "../../include/imports.ftl">
-
+ 
 <#-- @ftlvariable name="document" type="org.example.beans.Banner" -->
 <#if document??>
    <div class="has-edit-button">
       <@hst.manageContent hippobean=document />
-      <h4>${document.formTitle} </h4>
-      <#-- all the available form fields that can be rendered
-          TODO: add checkboxes for visibility, and a required fields parameter in the document 
-      -->
-      <@hst.actionURL var="actionLink"/>
-      <form action="${actionLink}" method="post">
-        <div class="grid-container">
-          <div class="grid-x grid-padding-x">
-            <div class="medium-6 cell">
-              <label>First Name:
-                <input name="firstName" type="text" placeholder="First Name">
-              </label>
-            </div>
-            <div class="medium-6 cell">
-              <label>Last Name:
-                 <input name="lastName" type="text" placeholder="Last Name">
-              </label>
-            </div>
+      <div class="row">
+         <div class="medium-12 columns">
+           <h4>${document.formTitle} </h4>
+         </div>
+      </div>
+    <@hst.actionURL var="actionLink"/>
+   
+    <form action="${actionLink}" method="post">
+        <div class="row">  
+              <#if document.formFields.firstNameVisible>
+                <div class="medium-6 large-6 columns">
+                  <label>First Name:
+                    <input name="firstName" type="text" placeholder="First Name" value="" <#if document.requiredFields.firstNameRequired>required</#if>>
+                  </label>
+                </div>
+               </#if>
+              <#if document.formFields.lastNameVisible>
+                <div class="medium-6 large-6  columns">
+                  <label>Last Name:
+                    <input name="lastName" type="text" placeholder="Last Name" value="" <#if document.requiredFields.lastNameRequired>required</#if>>
+                  </label>
+                </div> 
+              </#if> 
           </div>
-          <div class="grid-x grid-padding-x">
-            <div class="medium-6 cell">
-              <label>Phone:
-                <input name="phone" type="tel" placeholder="Phone">
-              </label>
-            </div>
-            <div class="medium-6 cell">
+
+          <div class="row">
+            <#if document.formFields.phoneVisible>
+              <div class="medium-6 large-6 columns">
+                <label>Phone:
+                  <input name="phone" type="tel" placeholder="Phone" value="" <#if document.requiredFields.phoneRequired>required</#if>>
+                </label>
+              </div>
+            </#if>
+            <#if document.formFields.emailVisible>
+            <div class="medium-6  large-6 columns">
               <label>Email:
-                 <input name="email" type="email" placeholder="Email">
+                 <input name="email" type="email" placeholder="Email" value="" <#if document.requiredFields.emailRequired>required</#if>>
               </label>
             </div>
+            </#if>
           </div>
-          <div class="grid-x grid-padding-x">
-            <div class="medium-12 cell">
-              <label>Street Address:
-                <input name="streetAddress" type="text" placeholder="Street Address">
-              </label>
+          <#if document.formFields.streetAddressVisible>
+            <div  class="row">
+              <div class="medium-12 columns ">
+                <label>Street Address:
+                  <input name="streetAddress" type="text" placeholder="Street Address" value="" <#if document.requiredFields.streetAddressRequired>required</#if>>
+                </label>
+              </div> 
             </div>
-           
+          </#if>
+
+          <div class="row">
+            <#if document.formFields.cityVisible>
+              <div class="medium-6 large-6 columns">
+                <label>City:
+                  <input name="city" type="text" placeholder="City" value="" <#if document.requiredFields.cityRequired>required</#if>>
+                </label>
+              </div>
+            </#if>
+            <#if document.formFields.stateVisible>
+              <div class="medium-3 large-3 columns">
+                <label>State:
+                  <input name="state" type="text" placeholder="State" value="" <#if document.requiredFields.stateRequired>required</#if>>
+                </label>
+              </div>
+            </#if>
+            <#if document.formFields.zipVisible>
+              <div class="medium-3 large-3 columns">
+                <label>Zipcode:
+                  <input name="zipcode" type="text" placeholder="Zipcode" value="" <#if document.requiredFields.zipRequired>required</#if>>
+                </label>
+              </div>
+            </#if>
           </div>
-          <div class="grid-x grid-padding-x">
-            <div class="medium-6 cell">
-              <label>City:
-                <input name="city" type="text" placeholder="City">
-              </label>
-            </div>
-            <div class="medium-3 cell">
-              <label>State:
-                 <input name="state" type="text" placeholder="State">
-              </label>
-            </div>
-             <div class="medium-3 cell">
-              <label>Zipcode:
-                 <input name="zipcode" type="text" placeholder="Zipcode">
-              </label>
-            </div>
-          </div>
-          <div class="input-group"> 
-            <div class="input-group-button">
-              <input type="submit" class="button" value="Submit" style="padding:12px;">
+
+          <div class="row" >  
+           <div class="medium-12 columns ">
+              <input type="submit" class="button" value="Submit" style="padding:12px;"> 
             </div>
          </div>
         </div>
-     </form>  
+     </form>   
   </div>
 
    
