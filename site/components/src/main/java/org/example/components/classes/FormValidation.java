@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
-import org.example.components.classes.FormModel;
 import org.hippoecm.hst.component.support.forms.FormMap;
 import org.hippoecm.hst.component.support.forms.FormUtils;
 
@@ -32,25 +31,48 @@ public class FormValidation {
 		this.requiredFields = requiredFields;
 	}
 	
-	public boolean validateSubmission() {
-		ArrayList<String> emptyFields = checkForEmpty(); 
+	/**
+	 * validates the inputed data entries are not invalid
+	 * are valid
+	 * @param map form map
+	 * @return arraylist of invalid entries or an empty list if all entries valid
+	 */
+	public ArrayList<String> validateSubmission(FormMap map) {
+		ArrayList<String> emptyFields = checkForEmpty(map); 
+		ArrayList<String> invalidFields = new ArrayList<String>(); 
+		// check for empty fields
 		if(emptyFields.size() > 0) {
 			ArrayList<String> reqFields = checkForEmptyRequiredFields(emptyFields);
 			// required fields are empty, submission is invalid
 			if(reqFields.size() > 0) {
-				return false;
-			} else {
-				// we have empty fields, but they are not required, so verify input is valid
-				
+				return reqFields;
 			} 
 		} 
-		return true; 
+		// check non blank field values. if blank and required, validation check would 
+		// have failed at this point
+		String[] fields = map.getFieldNames();
+		for (String field : fields) {
+			String fieldValue = map.getField(field).getValue();
+			if(StringUtils.isNotBlank(fieldValue)) {
+				if(!isValueValid(field, fieldValue))    {
+					invalidFields.add(field);
+				}
+	        }
+		} 
+		return invalidFields; 
 	}
 	
-	
-	private ArrayList<String> checkForEmpty() {
+	private boolean isValueValid(String fieldName, String fieldValue) {
+		HashMap<String, String> rules = getValidationRules();
+		if(fieldValue.matches(rules.get(fieldName))) {
+			return true;
+		}
+		return false;
+		
+	}
+	private ArrayList<String> checkForEmpty(FormMap map) {
 		ArrayList<String> emptyFields = new ArrayList<String>( );
-		String[] fields = this.map.getFieldNames();
+		String[] fields = map.getFieldNames();
 		
 		for (String field : fields) {
 			if(StringUtils.isBlank(this.map.getField(field).getValue())) {
@@ -93,14 +115,13 @@ public class FormValidation {
 		HashMap<String, String> rules = new HashMap<String, String>();
 		rules.put("firstName", "/^[a-z ,.'-]+$/i");
 		rules.put("lastName", "/^[a-z ,.'-]+$/i");
-		rules.put("streetAddress", "/\\d{1,}(\\s{1}\\w{1,})(\\s{1}?\\w{1,})+)/g");
+		rules.put("phone","");
 		rules.put("email","^[A-Z0-9+_.-]+@[A-Z0-9.-]+$");
-	    
-		
-		
-	    
-		return null;
-		
+		rules.put("streetAddress", "/\\d{1,}(\\s{1}\\w{1,})(\\s{1}?\\w{1,})+)/g");
+		rules.put("city", "");
+		rules.put("state", "");
+		rules.put("zipcode", "");
+		return rules; 
 	}
 	
 	 
