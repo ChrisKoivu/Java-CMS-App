@@ -10,21 +10,19 @@ import javax.servlet.http.HttpSession;
 import org.example.info.BasicDocumentInfo;
 import org.hippoecm.hst.component.support.forms.FormMap;
 import org.hippoecm.hst.component.support.forms.FormUtils;
-import org.hippoecm.hst.content.beans.standard.HippoBean;
-import org.hippoecm.hst.content.tool.ContentBeansTool;
+import org.hippoecm.hst.content.beans.standard.HippoBean; 
 import org.hippoecm.hst.core.component.HstComponentException;
 import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
 import org.hippoecm.hst.core.request.HstRequestContext;
 import org.onehippo.cms7.essentials.components.CommonComponent;
-import org.onehippo.cms7.essentials.components.EssentialsDocumentComponent;
-import org.onehippo.cms7.essentials.components.info.EssentialsDocumentComponentInfo;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Strings;
-import com.sun.xml.bind.CycleRecoverable.Context;
+ 
 /**
  * @author chris
  *
@@ -113,7 +111,7 @@ public class Webform extends CommonComponent{
 	            form = root.getBean(documentPath); 
 	        }  
 	        return form;
-	    }
+	 }
 	 
 	
 
