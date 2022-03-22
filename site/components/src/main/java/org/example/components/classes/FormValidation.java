@@ -13,6 +13,8 @@ import org.apache.commons.lang.StringUtils;
 import org.hippoecm.hst.component.support.forms.FormMap;
 import org.hippoecm.hst.component.support.forms.FormUtils;
 
+ 
+
 
 
 /**
@@ -38,6 +40,7 @@ public class FormValidation {
 	 * @return arraylist of invalid entries or an empty list if all entries valid
 	 */
 	public ArrayList<String> validateSubmission(FormMap map) {
+		System.out.println("validate submission method");
 		ArrayList<String> emptyFields = checkForEmpty(map); 
 		ArrayList<String> invalidFields = new ArrayList<String>(); 
 		// check for empty fields
@@ -115,12 +118,12 @@ public class FormValidation {
 		HashMap<String, String> rules = new HashMap<String, String>();
 		rules.put("firstName", "/^[a-z ,.'-]+$/i");
 		rules.put("lastName", "/^[a-z ,.'-]+$/i");
-		rules.put("phone","");
+		rules.put("phone","^[0-9]{10}");
 		rules.put("email","^[A-Z0-9+_.-]+@[A-Z0-9.-]+$");
-		rules.put("streetAddress", "/\\d{1,}(\\s{1}\\w{1,})(\\s{1}?\\w{1,})+)/g");
-		rules.put("city", "");
-		rules.put("state", "");
-		rules.put("zipcode", "");
+		rules.put("streetAddress", "[A-Za-z0-9]");
+		rules.put("city", "[A-Za-z]");
+		rules.put("state", "[A-Za-z]");
+		rules.put("zipcode", "\\s*\\d{5}\\s*");
 		return rules; 
 	}
 	

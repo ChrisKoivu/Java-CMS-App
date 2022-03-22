@@ -53,15 +53,15 @@
         <script type="text/javascript" src="<@hst.webfile path="/js/cms-request.js"/>"></script>
    
     </#if>
-
-     <script>
-        jQuery(document).ready(function( $ ) {
-          $.get("http://localhost:8080/site/api/banner", function(data, status){
+//<#--  
+  //   <script>
+  //      jQuery(document).ready(function( $ ) {
+       //   $.get("http://localhost:8080/site/api/banner", function(data, status){
                 
-               console.log(data);
-          });
-        });
-    </script>
+        //       console.log(data);
+      //    });
+     //   });
+   // </script>  -->
 
   </body>
 </html>

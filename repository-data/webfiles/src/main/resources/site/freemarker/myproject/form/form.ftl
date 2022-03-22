@@ -1,6 +1,7 @@
 <#include "../../include/imports.ftl">
  
 <#-- @ftlvariable name="document" type="org.example.beans.Banner" -->
+${formState}
 <#if document??>
    <div class="has-edit-button">
       <@hst.manageContent hippobean=document />
@@ -11,7 +12,7 @@
       </div>
     <@hst.actionURL var="actionLink"/>
    
-    <form action="${actionLink}" method="post">
+    <form id="${document.identifier}"action="${actionLink}" method="post">
         <div class="row">  
               <#if document.formFields.firstNameVisible>
                 <div class="medium-6 large-6 columns">
