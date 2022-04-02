@@ -55,6 +55,16 @@ import com.google.common.base.Strings;
 
 /**
  * HST component used for listing of documents.
+ * 
+ * This is different than the component class you get out of the box. This class allows 
+ * parameters to be set for a standard HST component as well as a BaseHstDynamicComponent.
+ * This is class is a hybrid of both worlds. HST Components require deployment of code to 
+ * change a configuration set, while the residual parameters provided by the BaseHstDynamicComponent
+ * do not. For dynamic parameters, it is simply a matter of adding the configuration item to the
+ * catalog entry for the component using this class. But this class also allows you to use sort and
+ * pagination, or do quick searches without pagination, separate from the show pagination setting
+ * of EssentialsPageable, where this functionality can be expanded to handle unique use cases.
+ *  
  *
  */
 @ParametersInfo(type = BasicDocumentListInfo.class)
