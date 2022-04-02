@@ -8,33 +8,26 @@ definitions:
           jcr:primaryType: hst:containeritemcomponent
         /DynamicBanner:
           jcr:primaryType: hst:componentdefinition
-          hst:componentclassname: org.example.components.DynamoComponent
+          hst:componentclassname: org.example.components.classes.BasicDocumentList
           hst:ctype: Banner
           hst:label: DynamicBanner
           hst:template: dynamic-banner
-          /document:
-            jcr:primaryType: hst:dynamicparameter
-            hst:valuetype: text
-            /hst:fieldconfig:
-              jcr:primaryType: hst:jcrpath
-              hst:pickerconfiguration: cms-pickers/documents-only
-              hst:pickerinitialpath: banners
-              hst:relative: true
-          /background:
-            jcr:primaryType: hst:dynamicparameter
-            /hst:fieldconfig:
-              jcr:primaryType: hst:dropdown
-              hst:value: [muted]
-          /valuelist:
-            jcr:primaryType: hst:dynamicparameter
-            hst:defaultvalue: formSettings
-            hst:hideinchannelmanager: true
-            hst:valuetype: text
           /resourcebundle:
             jcr:primaryType: hst:dynamicparameter
             hst:defaultvalue: essentials.global
             hst:hideinchannelmanager: true
             hst:valuetype: text
+          /valuelists:
+            jcr:primaryType: hst:dynamicparameter
+            hst:defaultvalue: formSettings
+            hst:hideinchannelmanager: true
+            hst:valuetype: text
+          /background:
+            jcr:primaryType: hst:dynamicparameter
+            hst:valuetype: text
+            /hst:fieldconfig:
+              jcr:primaryType: hst:dropdown
+              hst:value: [muted, muted-light]
         /DynamicHTML:
           jcr:primaryType: hst:componentdefinition
           hst:componentclassname: org.example.components.DynamoComponent
@@ -69,13 +62,13 @@ definitions:
           hst:ctype: Form
           hst:label: Webform
           hst:template: form-template
-          /valuelist:
-            jcr:primaryType: hst:dynamicparameter
-            hst:defaultvalue: formSettings
-            hst:hideinchannelmanager: true
-            hst:valuetype: text
           /resourcebundle:
             jcr:primaryType: hst:dynamicparameter
             hst:defaultvalue: essentials.global
+            hst:hideinchannelmanager: true
+            hst:valuetype: text
+          /valuelists:
+            jcr:primaryType: hst:dynamicparameter
+            hst:defaultvalue: formSettings
             hst:hideinchannelmanager: true
             hst:valuetype: text

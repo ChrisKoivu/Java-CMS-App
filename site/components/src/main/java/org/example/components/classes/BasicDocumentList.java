@@ -62,8 +62,8 @@ import com.google.common.base.Strings;
  * change a configuration set, while the residual parameters provided by the BaseHstDynamicComponent
  * do not. For dynamic parameters, it is simply a matter of adding the configuration item to the
  * catalog entry for the component using this class. But this class also allows you to use sort and
- * pagination, or do quick searches without pagination, separate from the show pagination setting
- * of EssentialsPageable, where this functionality can be expanded to handle unique use cases.
+ * pagination, or do quick specialized searches without pagination where this functionality can be expanded 
+ * to handle unique use cases, which uses the residualParameterValues for additional flexibility.
  *  
  *
  */
@@ -89,8 +89,8 @@ public class BasicDocumentList extends CommonComponent {
             return;
         }
         
-        if(paramInfo.getDoNonPaginatedSearch()) {
-        	 HippoBeanIterator iterator = doNonPageableSearch(request, paramInfo, scope);
+        if(paramInfo.getDoSpecializedSearch()) {
+        	 HippoBeanIterator iterator = doSpecializedSearch(request, paramInfo, scope);
         } else {
         	final Pageable<? extends HippoBean> pageable;
             if (scope instanceof HippoFacetNavigationBean) {
@@ -107,15 +107,18 @@ public class BasicDocumentList extends CommonComponent {
         }
     }
 
-    private HippoBeanIterator doNonPageableSearch(HstRequest request, BasicDocumentListInfo paramInfo,
+    private HippoBeanIterator doSpecializedSearch(HstRequest request, BasicDocumentListInfo paramInfo,
 			HippoBean scope) {
 		// TODO Auto-generated method stub
-		return doNonPageableSearch(request, paramInfo, scope, false);
+		return doSpecializedSearch(request, paramInfo, scope, false);
 	}
     
-    private HippoBeanIterator doNonPageableSearch(HstRequest request, BasicDocumentListInfo paramInfo,
+    private HippoBeanIterator doSpecializedSearch(HstRequest request, BasicDocumentListInfo paramInfo,
 			HippoBean scope, boolean useLimit) {
+    	
+    	final Map<String, Object> residualParams = paramInfo.getResidualParameterValues();
     	final String documentTypes = paramInfo.getDocumentTypes();
+    	
     	try {
     		HstQuery hstQuery = request.getRequestContext().getQueryManager().createQuery(scope, documentTypes);
     		log.info("HstQuery object is: " + hstQuery);

@@ -11,10 +11,11 @@ import org.onehippo.cms7.essentials.components.info.EssentialsPageable;
 import org.onehippo.cms7.essentials.components.info.EssentialsSortable;
 
 @FieldGroupList({
-	  @FieldGroup(value = {"backgound"}, titleKey = "Background"),
+	  @FieldGroup(value = {"background"}, titleKey = "Background"),
 	  @FieldGroup(value = {"topmargin", "bottommargin", "toppadding", "bottompadding", "leftpadding","rightpadding"}, titleKey = "Padding/Margins"),
 	  @FieldGroup(value = {"textalign", "verticalalign"}, titleKey = "Alignment"),
-	  @FieldGroup(value = {"path", "includeSubtypes", "documentTypes"}, titleKey = "Content Selection")
+	  @FieldGroup(value = {"path", "includeSubtypes", "documentTypes"}, titleKey = "Content Selection"),
+	  @FieldGroup(value = {"doSpecializedSearch"}, titleKey = "Specialized Search")
 })
 public interface BasicDocumentListInfo extends EssentialsSortable, EssentialsPageable, DynamicComponentInfo {
     @Parameter(name = "path")
@@ -27,8 +28,8 @@ public interface BasicDocumentListInfo extends EssentialsSortable, EssentialsPag
     @Parameter(name = "includeSubtypes", defaultValue = "true")
     Boolean getIncludeSubtypes();
     
-    @Parameter(name = "doNonPaginatedSearch", defaultValue = "true", displayName = "Do non paginated search")
-    Boolean getDoNonPaginatedSearch();
+    @Parameter(name = "doSpecializedSearch", defaultValue = "true", displayName = "Do specialized search")
+    Boolean getDoSpecializedSearch();
 
     @Parameter(name = "documentTypes")
     String getDocumentTypes();

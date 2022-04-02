@@ -1,6 +1,15 @@
 <#include "../../include/imports.ftl">
  
 <#-- @ftlvariable name="document" type="org.example.beans.Banner" -->
+<#if errorItems?has_content>
+  <div class="row error">
+    <ul>
+      <#list errorItems as item>
+        <li>${item}</li>
+      </#list>
+    </ul>
+  </div>
+</#if>
 ${formState}
 <#if document??>
    <div class="has-edit-button">
