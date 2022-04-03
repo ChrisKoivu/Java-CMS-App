@@ -5,6 +5,7 @@ package org.example.components.classes;
 
  
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,15 +14,11 @@ import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
-import org.example.info.BasicDocumentListInfo;
-import org.hippoecm.hst.configuration.components.DynamicParameter;
-import org.hippoecm.hst.container.RequestContextProvider;
-import org.hippoecm.hst.content.beans.query.HstQuery;
-import org.hippoecm.hst.content.beans.query.filter.BaseFilter;
+import org.example.info.BasicDocumentListInfo; 
+import org.hippoecm.hst.content.beans.query.HstQuery; 
 import org.hippoecm.hst.content.beans.query.filter.Filter;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
-import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder;
-import org.hippoecm.hst.content.beans.query.exceptions.FilterException;
+import org.hippoecm.hst.content.beans.query.builder.HstQueryBuilder; 
 import org.hippoecm.hst.content.beans.query.exceptions.QueryException;
 import org.hippoecm.hst.content.beans.standard.HippoBean;
 import org.hippoecm.hst.content.beans.standard.HippoBeanIterator;
@@ -33,10 +30,8 @@ import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
 import org.hippoecm.hst.core.request.HstRequestContext;
-import org.hippoecm.hst.util.ContentBeanUtils;
-import org.onehippo.cms7.essentials.components.CommonComponent;
-import org.onehippo.cms7.essentials.components.EssentialsListComponent;
-import org.onehippo.cms7.essentials.components.info.EssentialsListComponentInfo;
+import org.hippoecm.hst.util.ContentBeanUtils; 
+import org.onehippo.cms7.essentials.components.EssentialsListComponent; 
 import org.onehippo.cms7.essentials.components.info.EssentialsPageable;
 import org.onehippo.cms7.essentials.components.info.EssentialsSortable;
 import org.onehippo.cms7.essentials.components.paging.DefaultPagination;
@@ -44,10 +39,7 @@ import org.onehippo.cms7.essentials.components.paging.Pageable;
 import org.onehippo.cms7.essentials.components.utils.SiteUtils;
 import org.onehippo.forge.selection.hst.contentbean.ValueList;
 import org.onehippo.forge.selection.hst.util.SelectionUtil;
-/**
- * @author chris
- *
- */
+  
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -68,16 +60,21 @@ import com.google.common.base.Strings;
  *
  */
 @ParametersInfo(type = BasicDocumentListInfo.class)
-public class BasicDocumentList extends CommonComponent {
+public class BasicDocumentList extends EssentialsListComponent {
+    protected static final String REQUEST_ATTR_DYNAMIC_PARAMS = "dparams";
+    protected static final String REQUEST_ATTR_COLLECTION = "collection";
+    protected static final String REQUEST_ATTR_VALUELISTS = "valuelists";
+    
+    private static Logger log = LoggerFactory.getLogger(BasicDocumentList.class);
 
-    private static Logger log = LoggerFactory.getLogger(EssentialsListComponent.class);
+    public void doAction(HstRequest request, HstResponse response) throws HstComponentException {
 
-
+    }
+    
     @Override
-    public void doBeforeRender(final HstRequest request, final HstResponse response) {
-        super.doBeforeRender(request, response);
+    public void doBeforeRender(final HstRequest request, final HstResponse response) { 
         final BasicDocumentListInfo paramInfo = getComponentParametersInfo(request);
-        Map<String, Object> residualParams = paramInfo.getResidualParameterValues();
+         
         
         final String path = getScopePath(paramInfo);
         log.debug("Calling BasicDocumentListComponent for documents path:  [{}]", path);
@@ -91,6 +88,7 @@ public class BasicDocumentList extends CommonComponent {
         
         if(paramInfo.getDoSpecializedSearch()) {
         	 HippoBeanIterator iterator = doSpecializedSearch(request, paramInfo, scope);
+        	 populateRequestSpecialized(request, paramInfo, iterator);
         } else {
         	final Pageable<? extends HippoBean> pageable;
             if (scope instanceof HippoFacetNavigationBean) {
@@ -99,29 +97,38 @@ public class BasicDocumentList extends CommonComponent {
                 pageable = doSearch(request, paramInfo, scope);
             }
             populateRequest(request, paramInfo, pageable); 
-        }
+        } 
         
-        
-        if(getValueLists(request, residualParams) != null) {
-        	request.setAttribute("valuelists", getValueLists(request, residualParams));
+        final Map<String, Object> dparams = getDynamicParamValues(request);
+        if(getValueLists(request, dparams) != null) {
+        	request.setAttribute(REQUEST_ATTR_VALUELISTS, getValueLists(request, dparams));
         }
     }
+    
+    public void doBeforeServeResource(HstRequest request, HstResponse response) throws HstComponentException {
+      
+    }
 
-    private HippoBeanIterator doSpecializedSearch(HstRequest request, BasicDocumentListInfo paramInfo,
-			HippoBean scope) {
+    protected Map<String, Object> getDynamicParamValues(final HstRequest request) {
+    	final BasicDocumentListInfo paramInfo = getComponentParametersInfo(request);  
+    	final Map<String, Object> dparams = paramInfo.getResidualParameterValues();
+    	return dparams;    	
+    }
+    
+    protected HippoBeanIterator doSpecializedSearch(final HstRequest request, final BasicDocumentListInfo paramInfo,
+			final HippoBean scope) {
 		// TODO Auto-generated method stub
 		return doSpecializedSearch(request, paramInfo, scope, false);
 	}
     
-    private HippoBeanIterator doSpecializedSearch(HstRequest request, BasicDocumentListInfo paramInfo,
-			HippoBean scope, boolean useLimit) {
-    	
-    	final Map<String, Object> residualParams = paramInfo.getResidualParameterValues();
-    	final String documentTypes = paramInfo.getDocumentTypes();
+    protected HippoBeanIterator doSpecializedSearch(final HstRequest request, final BasicDocumentListInfo paramInfo,
+			final HippoBean scope, boolean useLimit) {    	
+
+    	final String documentTypes = paramInfo.getDocumentTypes(); 
     	
     	try {
     		HstQuery hstQuery = request.getRequestContext().getQueryManager().createQuery(scope, documentTypes);
-    		log.info("HstQuery object is: " + hstQuery);
+    		 
     		String query = getSearchQuery(request);
     		if(query != null) {
     			log.info("search param: " + query);
@@ -136,17 +143,20 @@ public class BasicDocumentList extends CommonComponent {
     		if(paramInfo.getSortField() != null) {
     			applyOrdering(request, hstQuery, paramInfo);
     		}
+    		log.info("begin specialized query");
     		HstQueryResult result = hstQuery.execute();
     		final HippoBeanIterator hippoIterator = result.getHippoBeans();
+    		log.info("end specialized query"); 
     		log.info(hippoIterator.getSize() + " records have been found.");
     		hstQuery = null;
     		return hippoIterator;    		
     	} catch (QueryException e) {
+    		log.error("specialized query failed");
     		e.printStackTrace();
     	} 
 		return null;
-	}
-
+	} 
+    
 	private int getQueryLimit(BasicDocumentListInfo paramInfo) {
 		// TODO Auto-generated method stub
 		int limit = paramInfo.getPageSize();
@@ -183,57 +193,24 @@ public class BasicDocumentList extends CommonComponent {
     		return SelectionUtil.valueListAsMap(selectedList);
     	}
     	return null;
-    }
+    } 
     
-    /**
-     * Populates request with search results
-     *
-     * @param request   HstRequest
-     * @param paramInfo EssentialsPageable instance
-     * @param pageable  search results (Pageable<HippoBean>)
-     * @see CommonComponent#REQUEST_ATTR_QUERY
-     * @see CommonComponent#REQUEST_ATTR_PAGEABLE
-     * @see CommonComponent#REQUEST_ATTR_PAGE
-     */
-    protected void populateRequest(final HstRequest request, final EssentialsPageable paramInfo, final Pageable<? extends HippoBean> pageable) {
-        request.setAttribute(REQUEST_ATTR_QUERY, getSearchQuery(request));
-        request.setModel(REQUEST_ATTR_PAGEABLE, pageable);
+    protected void populateRequestSpecialized(final HstRequest request, final BasicDocumentListInfo paramInfo, final HippoBeanIterator hippoIterator) {
+    	request.setAttribute(REQUEST_ATTR_QUERY, getSearchQuery(request));
+        request.setModel(REQUEST_ATTR_COLLECTION, hippoIterator);
         request.setAttribute(REQUEST_ATTR_PARAM_INFO, paramInfo);
-
-        if (pageable != null) {
-            pageable.setShowPagination(isShowPagination(request, paramInfo));
-        }
     }
-
-    /**
-     * Returns Search scope for given path. If path is null, current scope bean will be used, site wide scope otherwise
-     *
-     * @param request current HST request. Unused, available when overriding.
-     * @param path    path (optional)
-     * @return hippo bean or null
-     */
-    protected HippoBean getSearchScope(final HstRequest request, final String path) {
-        final HstRequestContext context = RequestContextProvider.get();
-        HippoBean scope = null;
-
-        if (Strings.isNullOrEmpty(path)) {
-            scope = context.getContentBean();
-        }
-
-        if (scope == null) {
-            scope = doGetScopeBean(path);
-        }
-        return scope;
-    }
-
+   
     /**
      * Apply ordering (if order field name is provided)
+     * using this method over the essentials list implementation
      *
      * @param request       instance of  HstRequest
      * @param query         instance of  HstQuery
      * @param componentInfo instance of EssentialsDocumentListComponentInfo
      * @param <T>           component info class.
      */
+     
     protected <T extends BasicDocumentListInfo> void applyOrdering(final HstRequest request, final HstQuery query, final T componentInfo) {
         final String sortField = componentInfo.getSortField();
         if (Strings.isNullOrEmpty(sortField)) {
@@ -245,8 +222,8 @@ public class BasicDocumentList extends CommonComponent {
         } else {
             query.addOrderByAscending(sortField);
         }
-    }
-
+    } 
+    
     protected <T extends BasicDocumentListInfo>
     Pageable<? extends HippoBean> doSearch(final HstRequest request, final T paramInfo, final HippoBean scope) {
         try {
@@ -260,7 +237,7 @@ public class BasicDocumentList extends CommonComponent {
         }
         return null;
     }
-
+    
     /**
      * Execute the search given a facet navigation scope.
      *
@@ -286,16 +263,9 @@ public class BasicDocumentList extends CommonComponent {
         return pageable;
     }
 
-    protected void handleInvalidScope(final HstRequest request, final HstResponse response) {
-        // TODO determine what to do with invalid scope
-        response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-        if (log.isDebugEnabled()) {
-            throw new HstComponentException("EssentialsListComponent needs a valid scope to display documents");
-        }
-    }
-
+    
     /**
-     * Build the HST query for the list.
+     * Build the) HST query for the list.
      *
      * @param request   the current request
      * @param paramInfo the parameter info
@@ -345,109 +315,8 @@ public class BasicDocumentList extends CommonComponent {
     protected <T extends BasicDocumentListInfo>
     void applyExcludeScopes(final HstRequest request, final HstQuery query, final T paramInfo) {
         // just an extension point for time being
-    }
-
-    /**
-     * Create a list of filters and apply them to the query, using AND logic.
-     *
-     * @param request current HST request
-     * @param query   query under construction
-     * @throws FilterException
-     */
-    protected void buildAndApplyFilters(final HstRequest request, final HstQuery query) throws FilterException {
-        final List<BaseFilter> filters = new ArrayList<>();
-
-        contributeAndFilters(filters, request, query);
-
-        final Filter queryFilter = createQueryFilter(request, query);
-        if (queryFilter != null) {
-            filters.add(queryFilter);
-        }
-
-        applyAndFilters(query, filters);
-    }
-
-    /**
-     * Extension point for sub-classes: contribute to a list of filters to apply using AND logic.
-     *
-     * @param filters list of filters under construction
-     * @param request current HST request
-     * @param query   query under construction, provider for new filters
-     * @throws FilterException
-     */
-    protected void contributeAndFilters(final List<BaseFilter> filters, final HstRequest request, final HstQuery query) throws FilterException {
-        // empty
-    }
-
-    /**
-     * Apply a list of filters fo a query, using AND logic.
-     * <p/>
-     * Make sure that if the query already had a filter, it gets preserved.
-     *
-     * @param query   query under construction
-     * @param filters list of filters to be AND-ed
-     * @throws FilterException
-     */
-    protected void applyAndFilters(final HstQuery query, final List<BaseFilter> filters) throws FilterException {
-        final BaseFilter oldRootFilter = query.getFilter();
-        if (oldRootFilter != null) {
-            filters.add(oldRootFilter);
-        }
-
-        if (filters.size() > 1) {
-            final Filter andFilter = query.createFilter();
-            for (BaseFilter filter : filters) {
-                andFilter.addAndFilter(filter);
-            }
-            query.setFilter(andFilter);
-        } else if (filters.size() == 1) {
-            query.setFilter(filters.get(0));
-        }
-    }
-
-    /**
-     * Apply search filter (query) to result list
-     *
-     * @param request current HST request
-     * @param query   query under construction, provider for new filters
-     * @throws FilterException
-     */
-    protected Filter createQueryFilter(final HstRequest request, final HstQuery query) throws FilterException {
-        Filter queryFilter = null;
-
-        // check if we have query parameter
-        final String queryParam = getSearchQuery(request);
-        if (!Strings.isNullOrEmpty(queryParam)) {
-            log.debug("using search query {}", queryParam);
-
-            queryFilter = query.createFilter();
-            queryFilter.addContains(".", queryParam);
-        }
-        return queryFilter;
-    }
-
-
-    /**
-     * Fetches search query from reqest and cleans it
-     *
-     * @param request HstRequest
-     * @return null if query was null or invalid
-     */
-    protected String getSearchQuery(HstRequest request) {
-        return cleanupSearchQuery(getAnyParameter(request, REQUEST_PARAM_QUERY));
-    }
-
-
-    /**
-     * Determine the current page of the list query.
-     *
-     * @param request the current request
-     * @return the current page of the query
-     */
-    protected int getCurrentPage(final HstRequest request) {
-        return getAnyIntParameter(request, REQUEST_PARAM_PAGE, 1);
-    }
-
+    } 
+    
     /**
      * Determine the page size of the list query.
      *
@@ -475,6 +344,15 @@ public class BasicDocumentList extends CommonComponent {
         }
         return paramInfo.getPath();
     }
+    
+    protected void handleInvalidScope(final HstRequest request, final HstResponse response) {
+        // TODO determine what to do with invalid scope
+        response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        if (log.isDebugEnabled()) {
+            throw new HstComponentException("EssentialsListComponent needs a valid scope to display documents");
+        }
+    }
+    
     /**
      * Determine whether pagination should be shown.
      *
