@@ -22,14 +22,24 @@ import org.onehippo.cms7.essentials.components.info.EssentialsDocumentComponentI
  */
 
 @FieldGroupList({ 
-    @FieldGroup(titleKey = "layout", value = {"background" })
+	  @FieldGroup(value = {"document"}, titleKey = "Select Document"),
+	  @FieldGroup(value = {"background"}, titleKey = "Background"),
+	  @FieldGroup(value = {"topmargin", "bottommargin", "toppadding", "bottompadding", "leftpadding","rightpadding"}, titleKey = "Padding/Margins"),
+	  @FieldGroup(value = {"textalign", "verticalalign"}, titleKey = "Alignment"),
+	  @FieldGroup(value = {"documentByRelativePath", "documentTypes"}, titleKey = "Document by path"),
 })
 
-public interface BasicDocumentInfo extends DynamicComponentInfo, EssentialsDocumentComponentInfo {
+public interface BasicDocumentInfo extends DynamicComponentInfo {
     @Parameter(name = "document", required = true)
     @JcrPath(
             isRelative = true,
             pickerSelectableNodeTypes = {"hippo:document"}
     )
     String getDocument();
+    
+    @Parameter(name = "documentByRelativePath", defaultValue = "false", displayName = "Retrieve documents by relative path on page")
+    Boolean getDocumentByRelativePath();
+    
+    @Parameter(name = "documentTypes", displayName = "Enter document type to retrieve")
+    String getDocumentTypes();
 }

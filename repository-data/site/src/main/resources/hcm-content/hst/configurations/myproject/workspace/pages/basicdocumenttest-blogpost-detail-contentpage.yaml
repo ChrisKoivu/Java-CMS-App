@@ -1,0 +1,17 @@
+/hst:hst/hst:configurations/myproject/hst:workspace/hst:pages/basicdocumenttest-blogpost-detail-contentpage:
+  jcr:primaryType: hst:component
+  hst:lastmodified: 2022-04-04T15:47:46.768-04:00
+  hst:referencecomponent: hst:abstractpages/base
+  /main:
+    jcr:primaryType: hst:containercomponent
+    hippo:identifier: dd8c9fda-f352-44c7-9a06-d7b8bf6febd6
+    hst:label: Content Page Main
+    hst:lastmodified: 2022-04-04T15:53:55.999-04:00
+    hst:xtype: hst.vbox
+    /BasicDocument:
+      jcr:primaryType: hst:containeritemcomponent
+      hst:componentdefinition: hst:components/myproject-catalog/BasicDocument
+      hst:parameternames: [background, document, documentTypes, valuelists, documentByRelativePath,
+        resourcebundle]
+      hst:parametervalues: ['', blog/2021/05/first-blog-post, 'myproject:blogpost',
+        '', 'on', '']

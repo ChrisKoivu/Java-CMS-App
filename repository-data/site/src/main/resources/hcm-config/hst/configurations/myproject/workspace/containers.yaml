@@ -41,6 +41,7 @@ definitions:
           hippo:identifier: 7a487b98-1f6f-4dc6-bc54-2f18056d8aca
           hst:label: Blog List Main
           hst:xtype: hst.vbox
+          hst:lastmodified: 2022-04-04T12:17:35.583-04:00
       /bloglistsidebar:
         jcr:primaryType: hst:containercomponentfolder
         /main:
@@ -49,6 +50,7 @@ definitions:
           hippo:identifier: 6d402c45-9d55-4b7a-91c8-46f90a89d20d
           hst:label: Blog List Sidebar
           hst:xtype: hst.vbox
+          hst:lastmodified: 2022-04-04T11:10:31.776-04:00
       /blogpagesidebar:
         jcr:primaryType: hst:containercomponentfolder
         /main:

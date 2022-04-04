@@ -1,0 +1,6 @@
+/hst:hst/hst:configurations/myproject/hst:workspace/hst:containers/bloglistdetail/main/BasicDocument:
+  jcr:primaryType: hst:containeritemcomponent
+  hst:componentdefinition: hst:components/myproject-catalog/BasicDocument
+  hst:parameternames: [background, document, documentTypes, valuelists, documentByRelativePath,
+    resourcebundle]
+  hst:parametervalues: ['', home-greeting, 'myproject:blogpost', '', 'on', '']

@@ -1,0 +1,14 @@
+/hst:hst/hst:configurations/myproject/hst:workspace/hst:sitemap/blog1:
+  jcr:primaryType: hst:sitemapitem
+  hst:componentconfigurationid: hst:pages/blog1-contentpage
+  hst:lastmodified: 2022-04-04T15:49:08.527-04:00
+  hst:pagetitle: Blog1
+  /blogpost-detail:
+    jcr:primaryType: hst:sitemapitem
+    hst:componentconfigurationid: hst:pages/basicdocumenttest-blogpost-detail-contentpage
+    hst:lastmodified: 2022-04-04T15:49:08.527-04:00
+    hst:pagetitle: Blogpost Detail
+  /_default_:
+    jcr:primaryType: hst:sitemapitem
+    hst:componentconfigurationid: hst:pages/basicdocumenttest-blogpost-detail-contentpage
+    hst:pagetitle: Blogpost Detail

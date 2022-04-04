@@ -6,7 +6,7 @@
     jcr:primaryType: hst:containercomponent
     hippo:identifier: dd8c9fda-f352-44c7-9a06-d7b8bf6febd6
     hst:label: Content Page Main
-    hst:lastmodified: 2022-04-03T07:41:34.106-04:00
+    hst:lastmodified: 2022-04-04T09:16:55.811-04:00
     hst:xtype: hst.vbox
     /DynamicBanner:
       jcr:primaryType: hst:containeritemcomponent
@@ -15,3 +15,9 @@
         sortField, pageSize, valuelists, showPagination, includeSubtypes, resourcebundle]
       hst:parametervalues: [blog/2021/05, 'on', '', 'myproject:blogpost', desc, '',
         '10', '', 'off', 'on', '']
+    /BasicDocument:
+      jcr:primaryType: hst:containeritemcomponent
+      hst:componentdefinition: hst:components/myproject-catalog/BasicDocument
+      hst:parameternames: [background, document, valuelists, documentByRelativePath,
+        resourcebundle]
+      hst:parametervalues: ['', banners/test, '', 'on', '']
