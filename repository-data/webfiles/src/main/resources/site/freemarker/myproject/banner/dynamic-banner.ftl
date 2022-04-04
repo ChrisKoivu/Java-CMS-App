@@ -15,6 +15,13 @@
 
 <#else>
       <#-- @ftlvariable name="document" type="org.example.beans.Banner" -->
+      <#if contentNotFound?has_content>
+        <div class="row">
+           <p>${contentNotFound}</p>
+        </div> 
+      </#if>
+
+      
       <#if document??>
          <div class="has-edit-button">
              <@hst.manageContent hippobean=document />

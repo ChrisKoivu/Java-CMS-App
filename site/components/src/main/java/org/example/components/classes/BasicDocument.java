@@ -52,10 +52,12 @@ public class BasicDocument extends CommonComponent{
         	HippoBean bean = getContentBeanByRelativePath(request,  paramInfo);
         	if(bean != null) {
         		request.setModel(REQUEST_ATTR_DOCUMENT, bean);
+        	} else {
+        		request.setAttribute("contentNotFound", "404: Page is not found");  
         	}
-        	request.setAttribute("contentNotFound", "404: Page is not found");        	
         } else {
         	setContentBeanForPath(documentPath, request, response); 
+        	log.info("relative path search disabled, using selected document");
         }
         // send parameters to freemarker
         request.setAttribute(REQUEST_ATTR_PARAM_INFO, paramInfo);
