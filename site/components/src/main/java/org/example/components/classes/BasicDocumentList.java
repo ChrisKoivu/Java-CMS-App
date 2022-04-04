@@ -5,12 +5,9 @@ package org.example.components.classes;
 
  
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
@@ -65,6 +62,7 @@ public class BasicDocumentList extends EssentialsListComponent {
     protected static final String REQUEST_ATTR_COLLECTION = "collection";
     protected static final String REQUEST_ATTR_VALUELISTS = "valuelists";
     
+    
     private static Logger log = LoggerFactory.getLogger(BasicDocumentList.class);
 
     public void doAction(HstRequest request, HstResponse response) throws HstComponentException {
@@ -115,12 +113,54 @@ public class BasicDocumentList extends EssentialsListComponent {
     	return dparams;    	
     }
     
+    /** 
+     * search without filters or ordering, just searching by defined scope path
+     * @param request
+     * @param paramInfo
+     * @return
+     */
+    protected HippoBeanIterator doSpecializedSearch(final HstRequest request,  final BasicDocumentListInfo paramInfo) {
+    	final String scopePath = getScopePath(paramInfo);
+    	final HippoBean scope = getSearchScope(request, scopePath);
+    	final String documentTypes = paramInfo.getDocumentTypes(); 
+    	
+    	try {
+			HstQuery hstQuery = request.getRequestContext().getQueryManager().createQuery(scope, documentTypes);
+			HstQueryResult result = hstQuery.execute();
+    		final HippoBeanIterator hippoIterator = result.getHippoBeans();
+    		hstQuery = null;
+    		return hippoIterator;
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (QueryException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+    
+    /**
+     * search without limits, which can cause an infinite number of content items. should be used with discretion
+     * @param request
+     * @param paramInfo
+     * @param scope
+     * @return
+     */
     protected HippoBeanIterator doSpecializedSearch(final HstRequest request, final BasicDocumentListInfo paramInfo,
-			final HippoBean scope) {
-		// TODO Auto-generated method stub
+			final HippoBean scope) { 
 		return doSpecializedSearch(request, paramInfo, scope, false);
 	}
     
+    /**
+     * Search with a defined limit. targeted for cases where we need to do something outside the 
+     * pageable search results. Should use true for useLimit
+     * @param request
+     * @param paramInfo
+     * @param scope
+     * @param useLimit
+     * @return
+     */
     protected HippoBeanIterator doSpecializedSearch(final HstRequest request, final BasicDocumentListInfo paramInfo,
 			final HippoBean scope, boolean useLimit) {    	
 
@@ -159,7 +199,7 @@ public class BasicDocumentList extends EssentialsListComponent {
     
 	private int getQueryLimit(BasicDocumentListInfo paramInfo) {
 		// TODO Auto-generated method stub
-		int limit = paramInfo.getPageSize();
+		final int limit = paramInfo.getPageSize();
 		return limit;
 	}
 
@@ -187,8 +227,8 @@ public class BasicDocumentList extends EssentialsListComponent {
     }
     
     protected Map <String, String> getValueList(HstRequest request, String key){
-    	HstRequestContext context = request.getRequestContext();
-    	final ValueList selectedList = SelectionUtil.getValueListByIdentifier(key, context);
+    	final HstRequestContext context = request.getRequestContext();
+    	ValueList selectedList = SelectionUtil.getValueListByIdentifier(key, context);
     	if(selectedList != null) {
     		return SelectionUtil.valueListAsMap(selectedList);
     	}
@@ -318,16 +358,36 @@ public class BasicDocumentList extends EssentialsListComponent {
     } 
     
     /**
-     * Determine the page size of the list query.
-     *
-     * @param request   the current request
-     * @param paramInfo the settings of the component
-     * @return the page size of the query
+     * find bean by relative path, the concept is to use a relative path containing the jcr node name
+     * @param request 
+     * @param paramInfo
+     * @param scope
+     * @return
      */
-    protected int getPageSize(final HstRequest request, final EssentialsPageable paramInfo) {
-        // NOTE although unused, leave request parameter so devs
-        // can use it if they override this method
-        return paramInfo.getPageSize();
+    protected HippoBean getBeanByPath(final HstRequest request, final BasicDocumentListInfo paramInfo,
+			final HippoBean scope) { 
+    	final HippoBeanIterator iterator = doSpecializedSearch(request, paramInfo);
+    	final String path = request.getRequestURI();
+    	try {
+    		while(iterator.hasNext()) {
+        		HippoBean bean = iterator.next();
+        		if(applyPathFilter(path, bean.getName())){
+        			return bean;
+        		}
+        	}
+    		throw new NullPointerException("no content beans match the selected path.");
+    	} catch (NullPointerException e) {
+    		e.printStackTrace();
+    	}
+		return null;
+    }    
+    
+    protected boolean applyPathFilter(String path, String jcrNodeName) {     
+    	// if path and node name is null, whitespace, or empty then there is no match to the filter condition
+    	if( StringUtils.isNotBlank(path) && StringUtils.isNotBlank(jcrNodeName)) {
+ 		   return StringUtils.contains(path, jcrNodeName);
+ 		}
+    	return false;
     }
 
     /**
@@ -352,23 +412,5 @@ public class BasicDocumentList extends EssentialsListComponent {
             throw new HstComponentException("EssentialsListComponent needs a valid scope to display documents");
         }
     }
-    
-    /**
-     * Determine whether pagination should be shown.
-     *
-     * @param request   the current request
-     * @param paramInfo the settings of the component
-     * @return          flag indicating whether or not to show pagination
-     */
-    protected boolean isShowPagination(final HstRequest request, final EssentialsPageable paramInfo) {
-        final Boolean showPagination = paramInfo.getShowPagination();
-        if (showPagination == null) {
-            log.debug("Show pagination not configured, use default value 'true'");
-            return true;
-        }
-        return showPagination;
-    }
-
-
 }
 
