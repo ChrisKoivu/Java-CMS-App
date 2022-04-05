@@ -291,14 +291,15 @@
             hippo:docbase: 696a2657-448f-4a5a-89f5-1426d9ba1f7d
       /third-blog-post:
         jcr:primaryType: hippo:handle
-        jcr:mixinTypes: ['hippo:named', 'mix:referenceable']
+        jcr:mixinTypes: ['hippo:named', 'hippo:versionInfo', 'mix:referenceable']
         jcr:uuid: fd05023e-18a8-4536-8ac1-1ad32c5a1119
         hippo:name: Third blog post
-        /third-blog-post:
+        hippo:versionHistory: a450dbd4-f27d-4c79-9b45-3eee8c653b84
+        /third-blog-post[1]:
           jcr:primaryType: myproject:blogpost
           jcr:mixinTypes: ['mix:referenceable']
           jcr:uuid: dfc273c4-1a45-47ae-abfa-383bec2778f3
-          hippo:availability: [live, preview]
+          hippo:availability: [live]
           hippostd:holder: admin
           hippostd:state: published
           hippostdpubwf:createdBy: admin
@@ -306,6 +307,106 @@
           hippostdpubwf:lastModificationDate: 2021-05-08T06:59:00-04:00
           hippostdpubwf:lastModifiedBy: admin
           hippostdpubwf:publicationDate: 2021-05-08T06:59:00-04:00
+          hippotranslation:id: 208af3cc-8cf3-4407-bd37-8d25b92b57ef
+          hippotranslation:locale: en
+          myproject:authornames: [Hippo Author]
+          myproject:categories: [life, lorem, ipsum]
+          myproject:introduction: His no soleat iriure. Etiam dissentiet duo at. Ad
+            facilis pertinacia eam, nam melius facilisi volutpat ut, ea munere legere
+            qualisque pri. Cu nisl disputationi has. Duo tollit putent cu.
+          myproject:publicationdate: 2021-05-08T06:59:00-04:00
+          myproject:title: Third blog post
+          /myproject:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: |-
+              <html>
+                        <body>
+
+                        <p>Lorem ipsum dolor sit amet, sed dicant tempor dolorum at, pri in malis dicit omittam,
+                        mel ea constituto suscipiantur contentiones. At illum velit incorrupte pro. Ei vim tempor
+                        cetero, quo at volumus principes. No mel causae iisque viderer, eum agam dicit intellegebat
+                        cu. In nam meis pericula. No mea purto eirmod aliquid.</p>
+
+                        <p>Vis aeque eirmod persius ut, noster invidunt apeirian est no. Illum postea mnesarchum
+                        cu vix. Eam viris detracto no, usu soluta quaerendum at. Ius sale nullam eu. Vix cibo
+                        aperiri erroribus in, ea autem aeque sit.</p>
+
+                        <p>Vel tincidunt expetendis reformidans et, eum et oblique periculis. Vivendum recteque
+                        principes pri in. Id apeirian laboramus expetendis eum. Te debitis vocibus laboramus nam,
+                        ea ceteros copiosae est. Congue ornatus usu in, te vis impetus prodesset.</p>
+
+                        <p>Evertitur intellegam no mei, eos lobortis sapientem principes cu. Vel vidisse disputando
+                        et, ei melius moderatius duo. Esse tempor eu sed. Eu postea option impedit sed, no eum putent
+                        recusabo referrentur, no cum velit vitae. In pri justo nulla complectitur, cu duo doming
+                        graeco gubergren. Ius ferri platonem no, nec ei illum quaestio postulant, eu cum praesent
+                        voluptatum.</p>
+
+                        </body>
+                        </html>
+          /myproject:authors:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: 5a6e1136-dea0-4927-9130-9ce0a47b0189
+        /third-blog-post[2]:
+          jcr:primaryType: myproject:blogpost
+          jcr:mixinTypes: ['mix:referenceable', 'mix:versionable']
+          jcr:uuid: 94bd566a-93f0-4362-86a9-1e8acb3a8d92
+          hippo:availability: [preview]
+          hippostd:state: unpublished
+          hippostdpubwf:createdBy: admin
+          hippostdpubwf:creationDate: 2021-05-08T06:59:00-04:00
+          hippostdpubwf:lastModificationDate: 2021-05-08T06:59:00-04:00
+          hippostdpubwf:lastModifiedBy: admin
+          hippotranslation:id: 208af3cc-8cf3-4407-bd37-8d25b92b57ef
+          hippotranslation:locale: en
+          myproject:authornames: [Hippo Author]
+          myproject:categories: [life, lorem, ipsum]
+          myproject:introduction: His no soleat iriure. Etiam dissentiet duo at. Ad
+            facilis pertinacia eam, nam melius facilisi volutpat ut, ea munere legere
+            qualisque pri. Cu nisl disputationi has. Duo tollit putent cu.
+          myproject:publicationdate: 2021-05-08T06:59:00-04:00
+          myproject:title: Third blog post
+          /myproject:content:
+            jcr:primaryType: hippostd:html
+            hippostd:content: |-
+              <html>
+                        <body>
+
+                        <p>Lorem ipsum dolor sit amet, sed dicant tempor dolorum at, pri in malis dicit omittam,
+                        mel ea constituto suscipiantur contentiones. At illum velit incorrupte pro. Ei vim tempor
+                        cetero, quo at volumus principes. No mel causae iisque viderer, eum agam dicit intellegebat
+                        cu. In nam meis pericula. No mea purto eirmod aliquid.</p>
+
+                        <p>Vis aeque eirmod persius ut, noster invidunt apeirian est no. Illum postea mnesarchum
+                        cu vix. Eam viris detracto no, usu soluta quaerendum at. Ius sale nullam eu. Vix cibo
+                        aperiri erroribus in, ea autem aeque sit.</p>
+
+                        <p>Vel tincidunt expetendis reformidans et, eum et oblique periculis. Vivendum recteque
+                        principes pri in. Id apeirian laboramus expetendis eum. Te debitis vocibus laboramus nam,
+                        ea ceteros copiosae est. Congue ornatus usu in, te vis impetus prodesset.</p>
+
+                        <p>Evertitur intellegam no mei, eos lobortis sapientem principes cu. Vel vidisse disputando
+                        et, ei melius moderatius duo. Esse tempor eu sed. Eu postea option impedit sed, no eum putent
+                        recusabo referrentur, no cum velit vitae. In pri justo nulla complectitur, cu duo doming
+                        graeco gubergren. Ius ferri platonem no, nec ei illum quaestio postulant, eu cum praesent
+                        voluptatum.</p>
+
+                        </body>
+                        </html>
+          /myproject:authors:
+            jcr:primaryType: hippo:mirror
+            hippo:docbase: 5a6e1136-dea0-4927-9130-9ce0a47b0189
+        /third-blog-post[3]:
+          jcr:primaryType: myproject:blogpost
+          jcr:mixinTypes: ['mix:referenceable']
+          jcr:uuid: 9dc09236-2089-4141-8826-068a34b8f526
+          hippo:availability: []
+          hippostd:retainable: false
+          hippostd:state: draft
+          hippostd:transferable: false
+          hippostdpubwf:createdBy: admin
+          hippostdpubwf:creationDate: 2021-05-08T06:59:00-04:00
+          hippostdpubwf:lastModificationDate: 2022-04-05T07:51:17.417-04:00
+          hippostdpubwf:lastModifiedBy: admin
           hippotranslation:id: 208af3cc-8cf3-4407-bd37-8d25b92b57ef
           hippotranslation:locale: en
           myproject:authornames: [Hippo Author]

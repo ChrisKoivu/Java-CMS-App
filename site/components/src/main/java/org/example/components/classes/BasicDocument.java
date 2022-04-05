@@ -35,7 +35,7 @@ import com.google.common.base.Strings;
 @ParametersInfo(type = BasicDocumentInfo.class)
 public class BasicDocument extends CommonComponent{
 
-    private static Logger log = LoggerFactory.getLogger(BasicDocument.class);
+    private static Logger log = LoggerFactory.getLogger(BasicDocument.class); 
 
     @Override
     public void doBeforeRender(final HstRequest request, final HstResponse response) {
@@ -50,17 +50,35 @@ public class BasicDocument extends CommonComponent{
         // selected document
         if(paramInfo.getDocumentByRelativePath() && !isPreview(request)) {
         	HippoBean bean = getContentBeanByRelativePath(request,  paramInfo);
-        	if(bean != null) {
-        		request.setModel(REQUEST_ATTR_DOCUMENT, bean);
+        	if(bean != null) { 
+        		setDynamicContentBeanForPath(bean, request, response); 
         	} else {
         		request.setAttribute("contentNotFound", "404: Page is not found");  
         	}
         } else {
-        	setContentBeanForPath(documentPath, request, response); 
-        	log.info("relative path search disabled, using selected document");
+        	setContentBeanForPath(documentPath, request, response);  
         }
         // send parameters to freemarker
         request.setAttribute(REQUEST_ATTR_PARAM_INFO, paramInfo);
+    }
+    
+    /**
+     * sets the bean found from the relative path to the request object
+     * @param bean the HippoBean returned from the relative path query
+     * @param request the HstRequest object
+     * @param response the HstResponse object
+     */
+    public void setDynamicContentBeanForPath(final HippoBean bean, HstRequest request, final HstResponse response) {
+        final HstRequestContext context = request.getRequestContext();
+        try{
+        	if (bean != null) {
+        		 request.setModel(REQUEST_ATTR_DOCUMENT, bean); 
+        	} else {
+        		throw new NullPointerException("Content bean of type: " + bean.getClass().getName() + " is null. Unable to set bean on request.");
+        	}
+        } catch (NullPointerException e) {
+        	e.printStackTrace();
+        } 
     }
     
     /**
@@ -96,7 +114,9 @@ public class BasicDocument extends CommonComponent{
         final String documentTypes = paramInfo.getDocumentTypes(); 
       	try {
 			HstQuery hstQuery = request.getRequestContext().getQueryManager().createQuery(scope, documentTypes);
+			hstQuery.setLimit(paramInfo.getQueryLimit());  
 			HstQueryResult result = hstQuery.execute();
+			
     		final HippoBeanIterator hippoIterator = result.getHippoBeans();
     		hstQuery = null;
     		log.info("Searching scope: " + scopePath + ", " + hippoIterator.getSize() + " records have been returned");
@@ -109,9 +129,9 @@ public class BasicDocument extends CommonComponent{
 			e.printStackTrace();
 		}
  	    return null;
-	}
-    
-    /**
+	} 
+
+	/**
      * rerieves the scope bean from the scope path
      * @param request
      * @param path

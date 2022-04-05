@@ -26,7 +26,7 @@ import org.onehippo.cms7.essentials.components.info.EssentialsDocumentComponentI
 	  @FieldGroup(value = {"background"}, titleKey = "Background"),
 	  @FieldGroup(value = {"topmargin", "bottommargin", "toppadding", "bottompadding", "leftpadding","rightpadding"}, titleKey = "Padding/Margins"),
 	  @FieldGroup(value = {"textalign", "verticalalign"}, titleKey = "Alignment"),
-	  @FieldGroup(value = {"documentByRelativePath", "documentTypes"}, titleKey = "Document by path"),
+	  @FieldGroup(value = {"documentByRelativePath", "documentTypes", "queryLimit"}, titleKey = "Document by path"),
 })
 
 public interface BasicDocumentInfo extends DynamicComponentInfo {
@@ -42,4 +42,7 @@ public interface BasicDocumentInfo extends DynamicComponentInfo {
     
     @Parameter(name = "documentTypes", displayName = "Enter document type to retrieve")
     String getDocumentTypes();
+    
+    @Parameter(name = "queryLimit", required = false, defaultValue = "100", displayName = "Base query limit")
+    int getQueryLimit();
 }
