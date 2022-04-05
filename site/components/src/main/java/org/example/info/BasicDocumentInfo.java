@@ -43,6 +43,6 @@ public interface BasicDocumentInfo extends DynamicComponentInfo {
     @Parameter(name = "documentTypes", displayName = "Enter document type to retrieve")
     String getDocumentTypes();
     
-    @Parameter(name = "queryLimit", required = false, defaultValue = "100", displayName = "Base query limit")
+    @Parameter(name = "queryLimit", required = true, defaultValue = "100", displayName = "Base query limit")
     int getQueryLimit();
 }
