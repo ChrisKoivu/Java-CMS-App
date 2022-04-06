@@ -111,7 +111,8 @@ public class BasicDocument extends CommonComponent{
     protected HippoBeanIterator doSpecializedSearch(final HstRequest request,  final BasicDocumentInfo paramInfo, String relPath) {
     	final String scopePath = findScopePath(request, paramInfo, relPath);
     	final HippoBean scope = getSearchScope(request, scopePath);
-        final String documentTypes = paramInfo.getDocumentTypes(); 
+        final String documentTypes =  StringUtils.defaultIfBlank(paramInfo.getDocumentTypes(),  "hippo:document"); 
+        
       	try {
 			HstQuery hstQuery = request.getRequestContext().getQueryManager().createQuery(scope, documentTypes);
 			hstQuery.setLimit(paramInfo.getQueryLimit());  
@@ -149,6 +150,7 @@ public class BasicDocument extends CommonComponent{
         if (scope == null) {
             scope = siteBean.getBean(path); 
         }
+        log.debug("search scope is: " + scope.getCanonicalPath());
         return scope;
     }
     

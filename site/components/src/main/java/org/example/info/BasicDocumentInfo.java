@@ -40,7 +40,7 @@ public interface BasicDocumentInfo extends DynamicComponentInfo {
     @Parameter(name = "documentByRelativePath", defaultValue = "false", displayName = "Retrieve documents by relative path on page")
     Boolean getDocumentByRelativePath();
     
-    @Parameter(name = "documentTypes", displayName = "Enter document type to retrieve")
+    @Parameter(name = "documentTypes", required = true, displayName = "Enter document type to retrieve")
     String getDocumentTypes();
     
     @Parameter(name = "queryLimit", required = true, defaultValue = "100", displayName = "Base query limit")
