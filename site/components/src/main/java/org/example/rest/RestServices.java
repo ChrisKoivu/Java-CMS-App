@@ -104,6 +104,7 @@ public class RestServices {
     				response.append(inputLine);
     			}
     			in.close();
+    			conn = null;
     			return response.toString();    			
     		}else if(responseCode >= 400 && responseCode < 500) {
     			log.error(responseCode + ": Bad request");
