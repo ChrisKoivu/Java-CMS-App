@@ -40,7 +40,7 @@ public class RestServices {
     private static Logger log = LoggerFactory.getLogger(RestServices.class);
 	
 	
-    public void RestServices(String resourceUrl, String basicAuthUser, String basicAuthPassword) {
+    public RestServices(String resourceUrl, String basicAuthUser, String basicAuthPassword) {
     	this.resourceUrl = resourceUrl;
         this.basicAuthUser = basicAuthUser;
         this.basicAuthPassword = basicAuthPassword;
@@ -48,7 +48,7 @@ public class RestServices {
     }
     
     private void connect() { 
-    	if(StringUtils.isNotBlank(basicAuthUser) && StringUtils.isNotBlank(basicAuthPassword)) {
+    	if(StringUtils.isNotBlank(this.basicAuthUser) && StringUtils.isNotBlank(this.basicAuthPassword)) {
     		String auth = this.basicAuthUser + ":" + this.basicAuthPassword; 
     		// encode without padding
     		encodedCredentials = Base64.getEncoder().withoutPadding().encodeToString(auth.getBytes());

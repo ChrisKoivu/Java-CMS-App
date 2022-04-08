@@ -44,3 +44,15 @@
         </div>
       </#if> 
 </#if>
+   <script>
+      window.addEventListener("load", function(){ 
+         (function ($){
+            var url='<@hst.resourceURL />'.replace("amp;","");
+            jQuery(document).ready(function($) {
+               $.post(url, {action:"query"}, function(data){ 
+                     console.log(data);
+               });
+            }); 
+         })(jQuery);
+      }, false); 
+   </script>   

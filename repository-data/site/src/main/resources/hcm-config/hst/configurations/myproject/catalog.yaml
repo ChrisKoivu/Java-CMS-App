@@ -76,7 +76,29 @@ definitions:
           jcr:primaryType: hst:componentdefinition
           hst:componentclassname: org.example.components.classes.BasicDocument
           hst:ctype: Banner
-          hst:label: BasicDocument
+          hst:label: Basic Document
+          hst:template: dynamic-banner
+          /resourcebundle:
+            jcr:primaryType: hst:dynamicparameter
+            hst:defaultvalue: essentials.global
+            hst:hideinchannelmanager: true
+            hst:valuetype: text
+          /valuelists:
+            jcr:primaryType: hst:dynamicparameter
+            hst:defaultvalue: formSettings
+            hst:hideinchannelmanager: true
+            hst:valuetype: text
+          /background:
+            jcr:primaryType: hst:dynamicparameter
+            hst:valuetype: text
+            /hst:fieldconfig:
+              jcr:primaryType: hst:dropdown
+              hst:value: [muted, muted-light]
+        /BlogComponent:
+          jcr:primaryType: hst:componentdefinition
+          hst:componentclassname: org.example.components.BlogComponent
+          hst:ctype: Banner
+          hst:label: Blog Document
           hst:template: dynamic-banner
           /resourcebundle:
             jcr:primaryType: hst:dynamicparameter

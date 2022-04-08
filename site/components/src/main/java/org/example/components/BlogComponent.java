@@ -1,13 +1,13 @@
 /**
  * 
  */
-package org.example.components.classes;
+package org.example.components;
 
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.example.info.BasicDocumentInfo;
-import org.example.info.BasicDocumentListInfo;
+
 import org.hippoecm.hst.container.RequestContextProvider;
 import org.hippoecm.hst.content.beans.query.HstQuery;
 import org.hippoecm.hst.content.beans.query.HstQueryResult;
@@ -18,10 +18,8 @@ import org.hippoecm.hst.core.component.HstRequest;
 import org.hippoecm.hst.core.component.HstResponse;
 import org.hippoecm.hst.core.parameters.ParametersInfo;
 import org.hippoecm.hst.core.request.HstRequestContext;
-import org.hippoecm.hst.util.PathUtils;
-import org.onehippo.cms7.essentials.components.CommonComponent;
-import org.onehippo.cms7.essentials.components.EssentialsDocumentComponent;
-import org.onehippo.cms7.essentials.components.info.EssentialsDocumentComponentInfo;
+
+import org.example.components.classes.BasicDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,14 +31,12 @@ import com.google.common.base.Strings;
  */
 
 @ParametersInfo(type = BasicDocumentInfo.class)
-public class BasicDocument extends CommonComponent{
+public class BlogComponent extends BasicDocument{
 
-    private static Logger log = LoggerFactory.getLogger(BasicDocument.class); 
+    private static Logger log = LoggerFactory.getLogger(BlogComponent.class); 
 
     @Override
-    public void doBeforeRender(final HstRequest request, final HstResponse response) {
-        super.doBeforeRender(request, response);
-        
+    public void doBeforeRender(final HstRequest request, final HstResponse response) {        
         final BasicDocumentInfo paramInfo = getComponentParametersInfo(request);
         final String documentPath = paramInfo.getDocument();
         
@@ -61,9 +57,9 @@ public class BasicDocument extends CommonComponent{
         // send parameters to freemarker
         request.setAttribute(REQUEST_ATTR_PARAM_INFO, paramInfo);
     }
-    
     public void doBeforeServeResource(final HstRequest request, final HstResponse response) {  
-
+    	 log.debug("called dobefore served resource methid");
+    	 log.debug("param value: " + getAnyParameter(request, "action") );
     }
     
     /**
