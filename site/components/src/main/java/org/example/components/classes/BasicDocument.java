@@ -51,7 +51,8 @@ public class BasicDocument extends CommonComponent{
         if(paramInfo.getDocumentByRelativePath() && !isPreview(request)) {
         	HippoBean bean = getContentBeanByRelativePath(request,  paramInfo);
         	if(bean != null) { 
-        		setDynamicContentBeanForPath(bean, request, response); 
+        		// polymorphism
+        		setContentBeanForPath(bean, request, response); 
         	} else {
         		request.setAttribute("contentNotFound", "404: Page is not found");  
         	}
@@ -67,23 +68,27 @@ public class BasicDocument extends CommonComponent{
     }
     
     /**
-     * sets the bean found from the relative path to the request object
-     * @param bean the HippoBean returned from the relative path query
-     * @param request the HstRequest object
-     * @param response the HstResponse object
+     * Overload function to set the matched hippobean to the request
+     *
+     * @param bean the hippobean from the relative path search
+     * @param request      HstRequest
+     * @param response     HstResponse
+     * @see #setContentBean(String, org.hippoecm.hst.core.component.HstRequest, org.hippoecm.hst.core.component.HstResponse)
      */
-    public void setDynamicContentBeanForPath(final HippoBean bean, HstRequest request, final HstResponse response) {
-        final HstRequestContext context = request.getRequestContext();
-        try{
-        	if (bean != null) {
-        		 request.setModel(REQUEST_ATTR_DOCUMENT, bean); 
-        	} else {
-        		throw new NullPointerException("Content bean of type: " + bean.getClass().getName() + " is null. Unable to set bean on request.");
-        	}
-        } catch (NullPointerException e) {
-        	e.printStackTrace();
-        } 
+    public void setContentBeanForPath(final HippoBean bean, HstRequest request, final HstResponse response) {
+    	 final HstRequestContext context = request.getRequestContext();
+         try{
+         	if (bean != null) {
+         		 request.setModel(REQUEST_ATTR_DOCUMENT, bean); 
+         	} else {
+         		throw new NullPointerException("Content bean of type: " + bean.getClass().getName() + " is null. Unable to set bean on request.");
+         	}
+         } catch (NullPointerException e) {
+         	e.printStackTrace();
+         } 
     }
+    
+   
     
     /**
      * get content bean by the relative path. the relative path will match the jcr node name, in the 
@@ -92,7 +97,7 @@ public class BasicDocument extends CommonComponent{
      * @param response
      * @return hippobean for the selected document
      */
-    private HippoBean getContentBeanByRelativePath(HstRequest request,  final BasicDocumentInfo paramInfo) {
+    protected HippoBean getContentBeanByRelativePath(HstRequest request,  final BasicDocumentInfo paramInfo) {
     	final String requestUri = request.getRequestURI();
     	HippoBeanIterator iterator = doSpecializedSearch(request, paramInfo, requestUri);
     	while(iterator.hasNext()) {

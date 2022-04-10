@@ -18,6 +18,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLEncoder;
 import org.slf4j.Logger;
@@ -51,12 +52,18 @@ public class RestServices {
     	if(StringUtils.isNotBlank(this.basicAuthUser) && StringUtils.isNotBlank(this.basicAuthPassword)) {
     		String auth = this.basicAuthUser + ":" + this.basicAuthPassword; 
     		// encode without padding
-    		encodedCredentials = Base64.getEncoder().withoutPadding().encodeToString(auth.getBytes());
+    		encodedCredentials = Base64.getEncoder().encodeToString(auth.getBytes());
             this.useBaseAuth = true; 
     	}
     	try {
 			URL url = new URL(this.resourceUrl);
 			this.connection = (HttpURLConnection) url.openConnection();
+			try {
+				log.info("connected to: " + url.toURI());
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,7 +83,7 @@ public class RestServices {
 			this.connection.setRequestMethod(action);
 			this.connection.setRequestProperty("Accept", "application/json");
 			if(useBasicAuth) {
-				this.connection.setRequestProperty("Authorization", this.encodedCredentials);
+				this.connection.setRequestProperty("Authorization", "Basic " + this.encodedCredentials);
 			}
 			return this.connection;
 		} catch (ProtocolException e) {
